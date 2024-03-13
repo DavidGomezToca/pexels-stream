@@ -1,8 +1,13 @@
 import React from "react";
-import { AppContainer } from "./App.styles";
+import { AppContainer, GlobalStyle } from "./App.styles";
 
 function App() {
-  return <AppContainer>YOU STREAM v0.7.0</AppContainer>;
+  return (
+    <>
+      <GlobalStyle />
+      <AppContainer>YOU STREAM v0.8.0</AppContainer>
+    </>
+  );
 }
 
 export default App;
