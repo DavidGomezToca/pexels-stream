@@ -1,7 +1,8 @@
 import React from "react";
+import { AppContainer } from "./App.styles";
 
 function App() {
-  return <div>Hello React with TS</div>;
+  return <AppContainer>YOU STREAM v0.6.0</AppContainer>;
 }
 
 export default App;
