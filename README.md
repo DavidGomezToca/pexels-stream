@@ -10,7 +10,7 @@
 
 - **STACK :**
 
-  - **You Stream** : `0.6.0`
+  - **You Stream** : `0.7.0`
   - **React** : `18.2.0`
   - **Styled Components** : `6.1.8`
 
