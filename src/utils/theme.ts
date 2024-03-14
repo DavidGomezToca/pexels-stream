@@ -1,4 +1,4 @@
-export const darkTheme: {
+interface ITHEME {
   text: string;
   background: string;
   settingsBg: string;
@@ -12,7 +12,9 @@ export const darkTheme: {
   grey1: string;
   grey2: string;
   grey3: string;
-} = {
+}
+
+export const darkTheme: ITHEME = {
   text: "#FFF",
   background: "#0F0F0F",
   settingsBg: "#282828",
@@ -28,7 +30,7 @@ export const darkTheme: {
   grey3: "#A9A9A9",
 };
 
-export const lightTheme = {
+export const lightTheme: ITHEME = {
   text: "#000",
   background: "#FFF",
   settingsBg: "#FFF",
@@ -43,3 +45,12 @@ export const lightTheme = {
   grey2: "#F2F2F2",
   grey3: "#606060",
 };
+
+export const THEMES = {
+  dark: darkTheme,
+  light: lightTheme,
+};
+
+declare module "styled-components" {
+  export interface DefaultTheme extends ITHEME {}
+}
