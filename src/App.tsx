@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <AppContainer>YOU STREAM v0.8.0</AppContainer>
+      <AppContainer>YOU STREAM v0.9.0</AppContainer>
     </>
   );
 }
