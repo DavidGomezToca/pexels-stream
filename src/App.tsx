@@ -13,7 +13,6 @@ function App() {
       <GlobalStyle />
       <AppContainer>
         <Header />
-        YOU STREAM v0.13.0
       </AppContainer>
     </ThemeProvider>
   );

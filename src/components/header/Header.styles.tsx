@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledHeader = styled.div`
@@ -7,7 +8,6 @@ export const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
-  background-color: red;
 `;
 
 export const LeftSection = styled.div`
@@ -27,4 +27,11 @@ export const HeaderMoreSection = styled.div`
   align-items: center;
   gap: 0.85rem;
   position: relative;
+`;
+
+export const LogoSection = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  text-decoration: none;
 `;

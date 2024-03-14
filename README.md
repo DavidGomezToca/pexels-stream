@@ -10,8 +10,10 @@
 
 - **STACK :**
 
-  - **You Stream** : `0.13.0`
+  - **You Stream** : `0.14.0`
   - **React** : `18.2.0`
+  - **React Icons** : `5.0.1`
+  - **React Router Dom** : `6.22.3`
   - **Styled Components** : `6.1.8`
 
 ---
