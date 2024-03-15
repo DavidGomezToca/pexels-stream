@@ -10,6 +10,9 @@ import { Text } from "../../utils/Text.styles";
 import { Icon } from "../../utils/Icon.styles";
 import { SlMenu } from "react-icons/sl";
 import { FaYoutube } from "react-icons/fa";
+import AuthButton from "../authButton/AuthButton";
+import { CgMoreVerticalAlt } from "react-icons/cg";
+import { Tooltip } from "react-tooltip";
 
 const Header = () => {
   return (
@@ -20,11 +23,20 @@ const Header = () => {
         </Icon>
         <LogoSection to="/">
           <FaYoutube color="#FF0000" size={30} />
-          <Text className="logo">YouStream v0.14.0</Text>
+          <Text className="logo">YouStream v0.15.0</Text>
         </LogoSection>
       </LeftSection>
       <SearchSection>Search Section</SearchSection>
-      <HeaderMoreSection>More Section</HeaderMoreSection>
+      <HeaderMoreSection>
+        <Tooltip id="my-tooltip-settings" />
+        <Icon
+          data-tooltip-id="my-tooltip-settings"
+          data-tooltip-content="Settings"
+        >
+          <CgMoreVerticalAlt size={21} />
+        </Icon>
+        <AuthButton />
+      </HeaderMoreSection>
     </StyledHeader>
   );
 };

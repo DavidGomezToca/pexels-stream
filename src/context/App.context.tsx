@@ -19,7 +19,7 @@ interface IAppContextProviderProps {
 }
 
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
   const value = {
     theme,
   };
