@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyledHeader,
   LeftSection,
@@ -13,8 +13,10 @@ import { FaYoutube } from "react-icons/fa";
 import AuthButton from "../authButton/AuthButton";
 import { CgMoreVerticalAlt } from "react-icons/cg";
 import { Tooltip } from "react-tooltip";
+import Settings from "../Settings/Settings";
 
 const Header = () => {
+  const [showSettings, setShowSettings] = useState(false);
   return (
     <StyledHeader>
       <LeftSection>
@@ -23,19 +25,20 @@ const Header = () => {
         </Icon>
         <LogoSection to="/">
           <FaYoutube color="#FF0000" size={30} />
-          <Text className="logo">YouStream v0.15.0</Text>
+          <Text className="logo">YouStream v0.16.0</Text>
         </LogoSection>
       </LeftSection>
       <SearchSection>Search Section</SearchSection>
       <HeaderMoreSection>
-        <Tooltip id="my-tooltip-settings" />
         <Icon
-          data-tooltip-id="my-tooltip-settings"
+          data-tooltip-id="settings"
           data-tooltip-content="Settings"
+          onClick={() => setShowSettings((currentState) => !currentState)}
         >
           <CgMoreVerticalAlt size={21} />
         </Icon>
         <AuthButton />
+        {showSettings && <Settings />}
       </HeaderMoreSection>
     </StyledHeader>
   );

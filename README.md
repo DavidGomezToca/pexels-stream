@@ -10,7 +10,7 @@
 
 - **STACK :**
 
-  - **You Stream** : `0.15.0`
+  - **You Stream** : `0.16.0`
   - **React** : `18.2.0`
   - **React Icons** : `5.0.1`
   - **React Tooltip** : `5.26.3`

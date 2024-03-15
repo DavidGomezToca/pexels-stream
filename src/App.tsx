@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { THEMES } from "./utils/theme";
 import { useAppContext } from "./context/App.context";
 import Header from "./components/header/Header";
+import ToolTips from "./utils/ToolTips";
 
 function App() {
   const { theme } = useAppContext();
@@ -11,6 +12,7 @@ function App() {
   return (
     <ThemeProvider theme={THEMES[theme]}>
       <GlobalStyle />
+      <ToolTips />
       <AppContainer>
         <Header />
       </AppContainer>
