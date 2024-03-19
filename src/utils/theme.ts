@@ -26,7 +26,7 @@ export const darkTheme: ITHEME = {
   white: "#FFF",
   black: "#000",
   grey1: "#272727",
-  grey2: "#272727",
+  grey2: "#373739",
   grey3: "#A9A9A9",
 };
 

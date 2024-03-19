@@ -25,7 +25,7 @@ const Header = () => {
         </Icon>
         <LogoSection to="/">
           <FaYoutube color="#FF0000" size={30} />
-          <Text className="logo">YouStream v0.16.0</Text>
+          <Text className="logo">YouStream v0.17.0</Text>
         </LogoSection>
       </LeftSection>
       <SearchSection>Search Section</SearchSection>
