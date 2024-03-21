@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const beats = keyframes`
+0%{
+  transform: scale(0.8)
+}
+50%{
+  transform: scale(1.1)
+}
+100%{
+  transform: scale(0.8)
+}
+`;
 
 export const Icon = styled.div<{ $showBackground?: boolean }>`
   background-color: ${({ theme, $showBackground }) =>
@@ -15,5 +27,11 @@ export const Icon = styled.div<{ $showBackground?: boolean }>`
     &:hover {
       background-color: ${({ theme: { grey2 } }) => grey2};
     }
+  }
+
+  &.listening {
+    background-color: ${({ theme: { youtubeRed } }) => youtubeRed};
+    animation: ${beats} 1s linear infinite;
+    color: ${({ theme: { white } }) => white};
   }
 `;

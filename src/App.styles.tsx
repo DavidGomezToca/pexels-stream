@@ -23,6 +23,10 @@ export const GlobalStyle = createGlobalStyle`
     &::-webkit-scrollbar{
         display: none;
     }
+
+    input:focus{
+        outline: none;
+    }
 `;
 
 export const AppContainer = styled.div`

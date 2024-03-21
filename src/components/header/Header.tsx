@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { MouseEventHandler, useEffect, useState } from "react";
 import {
   StyledHeader,
   LeftSection,
@@ -16,11 +16,29 @@ import AuthButton from "../authButton/AuthButton";
 import { CgMoreVerticalAlt } from "react-icons/cg";
 import Settings from "../Settings/Settings";
 import { useAppContext } from "../../context/App.context";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
 const Header = () => {
   const [showSettings, setShowSettings] = useState(false);
   const [searchText, setSearchText] = useState("");
   const { text, setSearchBarText } = useAppContext();
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+  } = useSpeechRecognition();
+
+  useEffect(() => {
+    setSearchText(transcript);
+    setSearchBarText(transcript);
+  }, [transcript]);
+
+  if (!browserSupportsSpeechRecognition) {
+    return <span>Browser doesn't support speech recognition.</span>;
+  }
 
   return (
     <StyledHeader>
@@ -30,7 +48,7 @@ const Header = () => {
         </Icon>
         <LogoSection to="/">
           <FaYoutube color="#FF0000" size={30} />
-          <Text className="logo">YouStream v0.18.0</Text>
+          <Text className="logo">YouStream v0.19.0</Text>
         </LogoSection>
       </LeftSection>
       <SearchSection>
@@ -41,14 +59,24 @@ const Header = () => {
             onChange={(e) => setSearchText(e.target.value)}
           />
           <Icon
-            data-tooltip-id="voiceSearch"
-            data-tooltip-content={text.voiceSearch}
-            $showBackground={true}
+            data-tooltip-id="search"
+            data-tooltip-content={text.search}
             onClick={() => setSearchBarText(searchText)}
           >
-            <LuSearch size={21} />
+            <LuSearch size={19} />
           </Icon>
         </SearchBar>
+        <Icon
+          data-tooltip-id="voiceSearch"
+          data-tooltip-content={text.voiceSearch}
+          onClick={
+            SpeechRecognition.startListening as MouseEventHandler<HTMLDivElement>
+          }
+          $showBackground
+          className={listening ? "listening" : ""}
+        >
+          <FaMicrophone size={19} />
+        </Icon>
       </SearchSection>
       <HeaderMoreSection>
         <Icon
