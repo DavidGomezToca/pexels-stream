@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         -ms-box-sizing: border-box !important;
     }
 
-    ::-webski-scrollbar{
+    ::-webkit-scrollbar{
         width: 0;
         background: transparent;
     }
