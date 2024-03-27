@@ -23,7 +23,7 @@ import SpeechRecognition, {
 const Header = () => {
   const [showSettings, setShowSettings] = useState(false);
   const [searchText, setSearchText] = useState("");
-  const { text, setSearchBarText } = useAppContext();
+  const { text, setSearchBarText, toggleMenuSize } = useAppContext();
   const {
     transcript,
     listening,
@@ -43,12 +43,12 @@ const Header = () => {
   return (
     <StyledHeader>
       <LeftSection>
-        <Icon className="menu">
+        <Icon className="menu" onClick={() => toggleMenuSize()}>
           <SlMenu size={17} />
         </Icon>
         <LogoSection to="/">
           <FaYoutube color="#FF0000" size={30} />
-          <Text className="logo">YouStream v0.19.0</Text>
+          <Text className="logo">YouStream v0.20.0</Text>
         </LogoSection>
       </LeftSection>
       <SearchSection>
