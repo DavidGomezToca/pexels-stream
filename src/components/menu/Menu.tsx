@@ -1,8 +1,25 @@
 import React from "react";
-import { StyledMenu } from "./Menu.styles";
+import { MenuItem, StyledMenu } from "./Menu.styles";
+import { useAppContext } from "../../context/App.context";
+import { MENU_SMALL } from "../../utils/SideMenu";
+import { Text } from "../../utils/Text.styles";
+import { ITranslations } from "../../utils/translations";
 
 const Menu = () => {
-  return <StyledMenu>Menu</StyledMenu>;
+  const { isMenuSmall, text } = useAppContext();
+  if (isMenuSmall) {
+    return (
+      <StyledMenu>
+        {MENU_SMALL.map(({ name, icon }) => (
+          <MenuItem className="small">
+            {icon}
+            <Text>{text[name as keyof ITranslations]}</Text>
+          </MenuItem>
+        ))}
+      </StyledMenu>
+    );
+  }
+  return <StyledMenu></StyledMenu>;
 };
 
 export default Menu;
