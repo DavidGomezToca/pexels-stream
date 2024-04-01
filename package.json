@@ -1,6 +1,6 @@
 {
   "name": "you-stream",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -10,6 +10,7 @@
     "@types/node": "^16.18.88",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.21",
+    "pexels": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",

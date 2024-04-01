@@ -10,13 +10,14 @@
 
 - **STACK :**
 
-  - **You Stream** : `0.23.0`
-  - **React** : `18.2.0`
-  - **React Icons** : `5.0.1`
-  - **React Tooltip** : `5.26.3`
-  - **React Router Dom** : `6.22.3`
-  - **Styled Components** : `6.1.8`
-  - **React Speech Recognition** : `3.10.0`
+  - **YOU STREAM** : `0.24.0`
+  - **REACT** : `18.2.0`
+  - **PEXELS** : `1.4.0`
+  - **REACT ICONS** : `5.0.1`
+  - **REACT TOOLTIP** : `5.26.3`
+  - **REACT ROUTER DOM** : `6.22.3`
+  - **STYLED COMPONENTS** : `6.1.8`
+  - **REACT SPEECH RECOGNITION** : `3.10.0`
 
 ---
 
