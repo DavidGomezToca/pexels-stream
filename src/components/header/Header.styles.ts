@@ -20,7 +20,6 @@ export const SearchSection = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding-top: 1rem;
 `;
 
 export const HeaderMoreSection = styled.div`
