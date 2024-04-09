@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import { ITranslations, LANGUAGE } from "../utils/translations";
-import { createClient } from "pexels";
+import { Video, Videos, createClient } from "pexels";
 import { PEXELES_API_KEY } from "../utils/pexels";
 
 interface IAppContextValue {
@@ -24,6 +24,8 @@ interface IAppContextValue {
   activeMenuText: string;
   activeCategory: string;
   setActiveCategory: Dispatch<SetStateAction<string>>;
+  videos: Video[];
+  isFetchingVideos: boolean;
 }
 
 const AppContext = createContext<IAppContextValue | null>(null);
@@ -49,6 +51,8 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [isMenuSmall, setIsMenuSmall] = useState(false);
   const [activeMenuText, setActiveMenuText] = useState("Home");
   const [activeCategory, setActiveCategory] = useState("All");
+  const [videos, setVideos] = useState<Video[]>([]);
+  const [isFetchingVideos, setIsFetchingVideos] = useState(false);
 
   useEffect(() => {
     fetchVideos(activeCategory);
@@ -58,15 +62,18 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   }, [searchBarText]);
 
   const fetchVideos = async (query: string) => {
+    setIsFetchingVideos(true);
     try {
       const response = await client.videos.search({
         query,
         per_page: 44,
       });
-      console.log("RESPONSE", response);
+      setVideos((response as Videos).videos);
+      console.log("RESPONSE", (response as Videos).videos);
     } catch (error) {
       console.log("THERE WAS AN ERROR FETCHIN VIDEOS");
     }
+    setIsFetchingVideos(false);
   };
   const toggleTheme = () => {
     setTheme((theme) => (theme === "light" ? "dark" : "light"));
@@ -91,6 +98,8 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     activeMenuText,
     activeCategory,
     setActiveCategory,
+    videos,
+    isFetchingVideos,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

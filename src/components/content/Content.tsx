@@ -1,11 +1,14 @@
 import React from "react";
-import { StyledContent } from "./Content.styles";
+import { LoadingBackdrop, StyledContent } from "./Content.styles";
 import Categories from "../categories/Categories";
+import { useAppContext } from "../../context/App.context";
 
 const Content = () => {
+  const { isFetchingVideos } = useAppContext();
   return (
     <StyledContent>
       <Categories />
+      {isFetchingVideos && <LoadingBackdrop />}
     </StyledContent>
   );
 };
