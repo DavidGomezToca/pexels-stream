@@ -5,8 +5,6 @@ export const StyledRegularVideoItem = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
-  background-color: red;
-  height: 10rem;
 
   &:hover {
     cursor: pointer;
@@ -32,4 +30,18 @@ export const RegularVideoThumbnail = styled.div<{ $isMenuSmall?: boolean }>`
     css`
       height: 13.7rem;
     `}
+`;
+
+export const Time = styled.div`
+  background-color: ${({ theme: { background } }) => background};
+  width: max-content;
+  padding: 0.15rem 0.25rem;
+  border-radius: 0.3rem;
+  position: absolute;
+  bottom: 0.3rem;
+  right: 0.3rem;
+
+  p {
+    font-size: 13px;
+  }
 `;

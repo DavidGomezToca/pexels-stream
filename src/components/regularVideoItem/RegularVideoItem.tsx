@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import {
   RegularVideoThumbnail,
   StyledRegularVideoItem,
+  Time,
 } from "./RegularVideoItem.styles";
 import { Video } from "pexels";
 import ReactPlayer from "react-player";
 import { useAppContext } from "../../context/App.context";
+import { Text } from "../../utils/Text.styles";
 
 interface IRegularVideoItemProps {
   video: Video;
@@ -35,6 +37,11 @@ const RegularVideoItem = ({ video }: IRegularVideoItemProps) => {
         ) : (
           <img src={video.image} alt="thumbnail" />
         )}
+        <Time>
+          <Text>
+            {Math.floor(video.duration / 60)}:{Math.floor(video.duration % 60)}
+          </Text>
+        </Time>
       </RegularVideoThumbnail>
     </StyledRegularVideoItem>
   );
