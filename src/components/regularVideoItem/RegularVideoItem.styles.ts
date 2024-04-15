@@ -45,3 +45,33 @@ export const Time = styled.div`
     font-size: 13px;
   }
 `;
+
+export const RegularVideoContent = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2.3rem 1fr;
+  gap: 0.7rem;
+`;
+
+export const RegularVideoTitleSubTitle = styled.div`
+  margin-top: 0.2rem;
+  margin-left: 0.4rem;
+
+  .videoItemTitle {
+    font-size: 16px;
+    font-weight: bold;
+  }
+`;
+
+export const RegularVideoPic = styled.div`
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+  }
+`;

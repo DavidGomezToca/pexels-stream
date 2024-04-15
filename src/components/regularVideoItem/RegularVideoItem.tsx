@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import {
+  RegularVideoContent,
+  RegularVideoPic,
   RegularVideoThumbnail,
+  RegularVideoTitleSubTitle,
   StyledRegularVideoItem,
   Time,
 } from "./RegularVideoItem.styles";
@@ -8,6 +11,7 @@ import { Video } from "pexels";
 import ReactPlayer from "react-player";
 import { useAppContext } from "../../context/App.context";
 import { Text } from "../../utils/Text.styles";
+import { getTitle } from "../../utils/videos";
 
 interface IRegularVideoItemProps {
   video: Video;
@@ -16,6 +20,7 @@ interface IRegularVideoItemProps {
 const RegularVideoItem = ({ video }: IRegularVideoItemProps) => {
   const [playTrailer, setPlayTrailer] = useState(false);
   const { isMenuSmall } = useAppContext();
+  const TITLE_LENGTH = 50;
 
   return (
     <StyledRegularVideoItem
@@ -43,6 +48,17 @@ const RegularVideoItem = ({ video }: IRegularVideoItemProps) => {
           </Text>
         </Time>
       </RegularVideoThumbnail>
+      <RegularVideoContent>
+        <RegularVideoPic>
+          <img src={video.image} alt="profile pic" />
+        </RegularVideoPic>
+        <RegularVideoTitleSubTitle>
+          <Text className="videoItemTitle">
+            {getTitle(video.url).slice(0, TITLE_LENGTH)}
+            {getTitle(video.url).length > TITLE_LENGTH && "..."}
+          </Text>
+        </RegularVideoTitleSubTitle>
+      </RegularVideoContent>
     </StyledRegularVideoItem>
   );
 };
