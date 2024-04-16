@@ -3,6 +3,7 @@ import { Video } from "pexels";
 import {
   MoreLessButton,
   MoreLessContainer,
+  ShortsVideosContainer,
   StyledVideoShorts,
   VideoShortsHeading,
 } from "./VideoShorts.styles";
@@ -17,6 +18,7 @@ interface IVideoShortsProps {
 
 const VideoShorts = ({ videos }: IVideoShortsProps) => {
   const [showLess, setShowLess] = useState(true);
+  const videosList = showLess ? videos.slice(0, videos.length / 2) : videos;
   const { text } = useAppContext();
 
   return (
@@ -25,6 +27,11 @@ const VideoShorts = ({ videos }: IVideoShortsProps) => {
         <SiYoutubeshorts size={25} color="red" />
         <Text>{text.shorts}</Text>
       </VideoShortsHeading>
+      <ShortsVideosContainer>
+        {videosList.map((video, index) => (
+          <p>Video {index}</p>
+        ))}
+      </ShortsVideosContainer>
       <MoreLessContainer>
         <MoreLessButton onClick={() => setShowLess((state) => !state)}>
           <Text>{showLess ? text.showMore : text.showLess}</Text>

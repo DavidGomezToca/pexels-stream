@@ -25,6 +25,16 @@ export const MoreLessContainer = styled.div`
   margin-bottom: 0.5rem;
 `;
 
+export const ShortsVideosContainer = styled.div`
+  color: white;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 1rem;
+  row-gap: 1rem;
+  margin-top: 1.5rem;
+`;
+
 export const MoreLessButton = styled.button`
   border: 1px solid ${({ theme: { divider } }) => divider};
   display: flex;
