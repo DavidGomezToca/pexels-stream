@@ -11,6 +11,7 @@ import { SiYoutubeshorts } from "react-icons/si";
 import { Text } from "../../utils/Text.styles";
 import { useAppContext } from "../../context/App.context";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import ShortsVideoItem from "../shortsVideoItem/ShortsVideoItem";
 
 interface IVideoShortsProps {
   videos: Video[];
@@ -29,7 +30,7 @@ const VideoShorts = ({ videos }: IVideoShortsProps) => {
       </VideoShortsHeading>
       <ShortsVideosContainer>
         {videosList.map((video, index) => (
-          <p>Video {index}</p>
+          <ShortsVideoItem video={video} />
         ))}
       </ShortsVideosContainer>
       <MoreLessContainer>

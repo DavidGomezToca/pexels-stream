@@ -7,7 +7,6 @@ export const StyledCategories = styled.div`
   align-items: flex-end;
   gap: 0.5rem;
   position: relative;
-  padding-right: 10rem;
   z-index: 100;
 `;
 
@@ -35,5 +34,4 @@ export const CategoryItem = styled.div<{ active: boolean }>`
 export const CategoriesCarousel = styled.div`
   width: 100%;
   overflow-x: scroll;
-  margin-bottom: -18px;
 `;
