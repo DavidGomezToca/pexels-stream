@@ -5,6 +5,7 @@ import {
 } from "./HomepageVideos.styles";
 import { useAppContext } from "../../context/App.context";
 import RegularVideoItem from "../regularVideoItem/RegularVideoItem";
+import VideoShorts from "../videoShorts/VideoShorts";
 
 const HomepageVideos = () => {
   const { videos } = useAppContext();
@@ -18,6 +19,7 @@ const HomepageVideos = () => {
           <RegularVideoItem video={video} />
         ))}
       </RegularVideoThumbnailsContainer>
+      <VideoShorts videos={SECOND_VIDEO_SECTION} />
     </StyledHomepageVideos>
   );
 };
