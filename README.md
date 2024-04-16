@@ -10,7 +10,7 @@
 
 - **STACK :**
 
-  - **YOU STREAM** : `0.29.0`
+  - **YOU STREAM** : `0.30.0`
   - **REACT** : `18.2.0`
   - **PEXELS** : `1.4.0`
   - **REACT ICONS** : `5.0.1`

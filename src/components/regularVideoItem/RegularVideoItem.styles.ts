@@ -59,7 +59,25 @@ export const RegularVideoTitleSubTitle = styled.div`
 
   .videoItemTitle {
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
+  }
+
+  .name {
+    font-size: 14px;
+    margin: 0.5rem 0 0.2rem 0;
+    color: ${({ theme: { grey3 } }) => grey3};
+  }
+
+  .details {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    color: ${({ theme: { grey3 } }) => grey3};
+  }
+
+  .dot {
+    font-size: 8px;
   }
 `;
 
