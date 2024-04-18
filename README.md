@@ -1,6 +1,7 @@
 # _YOU STREAM_
 
-![THUMBNAIL](resources/img/Thumbnail.png)
+![THUMBNAIL](resources/img/Thumbnail_1.png)
+![THUMBNAIL](resources/img/Thumbnail_2.png)
 
 - **DESCRIPTION :**
 
@@ -10,7 +11,7 @@
 
 - **STACK :**
 
-  - **YOU STREAM** : `0.35.0`
+  - **YOU STREAM** : `0.36.0`
   - **REACT** : `18.2.0`
   - **PEXELS** : `1.4.0`
   - **REACT ICONS** : `5.0.1`

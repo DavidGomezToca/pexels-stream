@@ -17,7 +17,7 @@ const WatchVideoContents = () => {
         <MoreVideosContainer>
           <Categories />
           {videos.map((video, index) => (
-            <RegularVideoItem key={index} video={video} />
+            <RegularVideoItem key={index} smallView={true} video={video} />
           ))}
         </MoreVideosContainer>
       </StyledWatchVideoContents>

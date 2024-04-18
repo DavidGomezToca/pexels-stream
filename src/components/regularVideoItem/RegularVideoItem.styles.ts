@@ -9,6 +9,10 @@ export const StyledRegularVideoItem = styled.div`
   &:hover {
     cursor: pointer;
   }
+
+  &.smallView {
+    flex-direction: row;
+  }
 `;
 
 export const RegularVideoThumbnail = styled.div<{ $isMenuSmall?: boolean }>`
@@ -30,6 +34,11 @@ export const RegularVideoThumbnail = styled.div<{ $isMenuSmall?: boolean }>`
     css`
       height: 13.7rem;
     `}
+
+  &.smallView {
+    width: 19rem;
+    height: 6rem;
+  }
 `;
 
 export const Time = styled.div`
@@ -51,6 +60,10 @@ export const RegularVideoContent = styled.div`
   display: grid;
   grid-template-columns: 2.3rem 1fr;
   gap: 0.7rem;
+
+  &.smallView {
+    display: flex;
+  }
 `;
 
 export const RegularVideoTitleSubTitle = styled.div`
@@ -79,6 +92,20 @@ export const RegularVideoTitleSubTitle = styled.div`
   .dot {
     font-size: 8px;
   }
+
+  &.smallView {
+    .videoItemTitle {
+      font-size: 14px;
+    }
+
+    .name {
+      font-size: 12px;
+    }
+
+    .details {
+      font-size: 12px;
+    }
+  }
 `;
 
 export const RegularVideoPic = styled.div`
@@ -91,5 +118,9 @@ export const RegularVideoPic = styled.div`
     height: 100%;
     border-radius: inherit;
     object-fit: cover;
+  }
+
+  &.smallView {
+    display: none;
   }
 `;

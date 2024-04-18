@@ -15,9 +15,10 @@ import { getTitle } from "../../utils/videos";
 
 interface IRegularVideoItemProps {
   video: Video;
+  smallView?: boolean;
 }
 
-const RegularVideoItem = ({ video }: IRegularVideoItemProps) => {
+const RegularVideoItem = ({ video, smallView }: IRegularVideoItemProps) => {
   const [playTrailer, setPlayTrailer] = useState(false);
   const { isMenuSmall, setVideoToWatch } = useAppContext();
   const TITLE_LENGTH = 50;
@@ -27,8 +28,12 @@ const RegularVideoItem = ({ video }: IRegularVideoItemProps) => {
       onMouseOver={() => setPlayTrailer(true)}
       onMouseOut={() => setPlayTrailer(false)}
       onClick={() => setVideoToWatch(video.id)}
+      className={`${smallView && "smallView"}`}
     >
-      <RegularVideoThumbnail $isMenuSmall={isMenuSmall}>
+      <RegularVideoThumbnail
+        $isMenuSmall={isMenuSmall}
+        className={`${smallView && "smallView"}`}
+      >
         {playTrailer ? (
           <ReactPlayer
             width="100%"
@@ -49,11 +54,11 @@ const RegularVideoItem = ({ video }: IRegularVideoItemProps) => {
           </Text>
         </Time>
       </RegularVideoThumbnail>
-      <RegularVideoContent>
-        <RegularVideoPic>
+      <RegularVideoContent className={`${smallView && "smallView"}`}>
+        <RegularVideoPic className={`${smallView && "smallView"}`}>
           <img src={video.image} alt="profile pic" />
         </RegularVideoPic>
-        <RegularVideoTitleSubTitle>
+        <RegularVideoTitleSubTitle className={`${smallView && "smallView"}`}>
           <Text className="videoItemTitle">
             {getTitle(video.url).slice(0, TITLE_LENGTH)}
             {getTitle(video.url).length > TITLE_LENGTH && "..."}
