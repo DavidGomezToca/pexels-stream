@@ -1,12 +1,25 @@
 import React from "react";
-import { Text } from "../../utils/Text.styles";
-import { StyledWatchVideoContents } from "./WatchVideoContents.styles";
+import {
+  MoreVideosContainer,
+  StyledWatchVideoContents,
+} from "./WatchVideoContents.styles";
+import Categories from "../categories/Categories";
+import { useAppContext } from "../../context/App.context";
+import RegularVideoItem from "../regularVideoItem/RegularVideoItem";
 
 const WatchVideoContents = () => {
+  const { videos } = useAppContext();
+
   return (
     <div>
       <StyledWatchVideoContents>
-        <Text>WatchVideoContents</Text>
+        <p>Left Side</p>
+        <MoreVideosContainer>
+          <Categories />
+          {videos.map((video, index) => (
+            <RegularVideoItem key={index} video={video} />
+          ))}
+        </MoreVideosContainer>
       </StyledWatchVideoContents>
     </div>
   );
