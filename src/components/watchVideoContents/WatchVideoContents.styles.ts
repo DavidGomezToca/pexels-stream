@@ -17,3 +17,15 @@ export const MoreVideosContainer = styled.div`
   gap: 1rem;
   padding-top: 1.5rem;
 `;
+
+export const WatchVideosContainer = styled.div`
+  width: 100%;
+  padding-top: 1.5rem;
+`;
+
+export const VideoScreen = styled.div`
+  width: 100%;
+  height: 44rem;
+  border-radius: 1rem;
+  overflow: hidden;
+`;

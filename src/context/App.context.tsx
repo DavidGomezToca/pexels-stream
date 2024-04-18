@@ -29,6 +29,8 @@ interface IAppContextValue {
   isFetchingVideos: boolean;
   videoToWatch: number;
   setVideoToWatch: Dispatch<SetStateAction<number>>;
+  videoToWatchData: Video | undefined;
+  fetchVideo: (id: string) => Promise<void>;
 }
 
 const AppContext = createContext<IAppContextValue | null>(null);
@@ -57,6 +59,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [videos, setVideos] = useState<Video[]>([]);
   const [isFetchingVideos, setIsFetchingVideos] = useState(false);
   const [videoToWatch, setVideoToWatch] = useState<number>(0);
+  const [videoToWatchData, setVideoToWatchData] = useState<Video>();
 
   let navigate = useNavigate();
 
@@ -81,10 +84,17 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
         per_page: 44,
       });
       setVideos((response as Videos).videos);
-      console.log("RESPONSE", (response as Videos).videos);
-    } catch (error) {
-      console.log("THERE WAS AN ERROR FETCHIN VIDEOS");
-    }
+    } catch (error) {}
+    setIsFetchingVideos(false);
+  };
+  const fetchVideo = async (id: string) => {
+    setIsFetchingVideos(true);
+    try {
+      const response = await client.videos.show({
+        id,
+      });
+      setVideoToWatchData(response as Video);
+    } catch (error) {}
     setIsFetchingVideos(false);
   };
   const toggleTheme = () => {
@@ -114,6 +124,8 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     isFetchingVideos,
     videoToWatch,
     setVideoToWatch,
+    videoToWatchData,
+    fetchVideo,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
