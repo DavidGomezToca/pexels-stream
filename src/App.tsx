@@ -6,6 +6,8 @@ import { useAppContext } from "./context/App.context";
 import Header from "./components/header/Header";
 import ToolTips from "./utils/ToolTips";
 import Body from "./components/body/Body";
+import { Route, Routes } from "react-router-dom";
+import WatchVideoContents from "./components/watchVideoContents/WatchVideoContents";
 
 function App() {
   const { theme } = useAppContext();
@@ -16,7 +18,10 @@ function App() {
       <ToolTips />
       <AppContainer>
         <Header />
-        <Body />
+        <Routes>
+          <Route path="/" element={<Body />} />
+          <Route path="/:id" element={<WatchVideoContents />} />
+        </Routes>
       </AppContainer>
     </ThemeProvider>
   );

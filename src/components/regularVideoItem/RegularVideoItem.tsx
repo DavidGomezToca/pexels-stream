@@ -19,13 +19,14 @@ interface IRegularVideoItemProps {
 
 const RegularVideoItem = ({ video }: IRegularVideoItemProps) => {
   const [playTrailer, setPlayTrailer] = useState(false);
-  const { isMenuSmall } = useAppContext();
+  const { isMenuSmall, setVideoToWatch } = useAppContext();
   const TITLE_LENGTH = 50;
 
   return (
     <StyledRegularVideoItem
       onMouseOver={() => setPlayTrailer(true)}
       onMouseOut={() => setPlayTrailer(false)}
+      onClick={() => setVideoToWatch(video.id)}
     >
       <RegularVideoThumbnail $isMenuSmall={isMenuSmall}>
         {playTrailer ? (
