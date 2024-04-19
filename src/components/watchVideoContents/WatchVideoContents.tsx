@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import {
   MoreVideosContainer,
   StyledWatchVideoContents,
+  VideoDescription,
+  VideoDetails,
   VideoScreen,
   WatchVideosContainer,
 } from "./WatchVideoContents.styles";
@@ -12,6 +14,8 @@ import { useParams } from "react-router-dom";
 import { getTitle } from "../../utils/videos";
 import { LoadingBackdrop } from "../content/Content.styles";
 import ReactPlayer from "react-player";
+import { Text } from "../../utils/Text.styles";
+import { faker } from "@faker-js/faker";
 
 const WatchVideoContents = () => {
   const { videos, fetchVideo, videoToWatchData, isFetchingVideos } =
@@ -46,6 +50,14 @@ const WatchVideoContents = () => {
               url={videoToWatchData?.video_files[0].link}
             />
           </VideoScreen>
+          <VideoDetails>
+            <Text className="videoScreenTitle">
+              {getTitle(videoToWatchData?.url + "")}
+            </Text>
+            <VideoDescription>
+              <Text>{faker.lorem.paragraphs(5)}</Text>
+            </VideoDescription>
+          </VideoDetails>
         </WatchVideosContainer>
         <MoreVideosContainer>
           <Categories />

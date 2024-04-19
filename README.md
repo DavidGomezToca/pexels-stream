@@ -11,7 +11,8 @@
 
 - **STACK :**
 
-  - **YOU STREAM** : `0.37.0`
+  - **YOU STREAM** : `0.38.0`
+  - **FAKER** : `8.4.1`
   - **REACT** : `18.2.0`
   - **PEXELS** : `1.4.0`
   - **REACT ICONS** : `5.0.1`

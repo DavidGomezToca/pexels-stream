@@ -29,3 +29,24 @@ export const VideoScreen = styled.div`
   border-radius: 1rem;
   overflow: hidden;
 `;
+
+export const VideoDetails = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+
+  .videoScreenTitle {
+    font-size: 20px;
+    font-weight: bold;
+  }
+`;
+
+export const VideoDescription = styled.div`
+  width: 100%;
+  background-color: ${({ theme: { grey2 } }) => grey2};
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  line-height: 1.5rem;
+`;
