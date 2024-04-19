@@ -2,8 +2,12 @@ import React, { useEffect } from "react";
 import {
   MoreVideosContainer,
   StyledWatchVideoContents,
+  SubscribeButton,
+  UserAccount,
   VideoDescription,
   VideoDetails,
+  VideoDetailsActions,
+  VideoDetailsInfo,
   VideoScreen,
   WatchVideosContainer,
 } from "./WatchVideoContents.styles";
@@ -16,9 +20,10 @@ import { LoadingBackdrop } from "../content/Content.styles";
 import ReactPlayer from "react-player";
 import { Text } from "../../utils/Text.styles";
 import { faker } from "@faker-js/faker";
+import { RegularVideoPic } from "../regularVideoItem/RegularVideoItem.styles";
 
 const WatchVideoContents = () => {
-  const { videos, fetchVideo, videoToWatchData, isFetchingVideos } =
+  const { videos, fetchVideo, videoToWatchData, isFetchingVideos, text } =
     useAppContext();
   const { id } = useParams();
 
@@ -54,6 +59,20 @@ const WatchVideoContents = () => {
             <Text className="videoScreenTitle">
               {getTitle(videoToWatchData?.url + "")}
             </Text>
+            <VideoDetailsActions>
+              <VideoDetailsInfo>
+                <RegularVideoPic>
+                  <img src={videoToWatchData?.image} alt="profile pic" />
+                </RegularVideoPic>
+                <UserAccount>
+                  <Text className="name">{videoToWatchData?.user.name}</Text>
+                  <Text className="subscribers">
+                    {videoToWatchData?.duration}k {text.subscribers}
+                  </Text>
+                </UserAccount>
+                <SubscribeButton>{text.subscribe}</SubscribeButton>
+              </VideoDetailsInfo>
+            </VideoDetailsActions>
             <VideoDescription>
               <Text>{faker.lorem.paragraphs(5)}</Text>
             </VideoDescription>

@@ -50,3 +50,42 @@ export const VideoDescription = styled.div`
   margin-top: 1rem;
   line-height: 1.5rem;
 `;
+
+export const VideoDetailsActions = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+`;
+
+export const VideoDetailsInfo = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const UserAccount = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+  gap: 0.2rem;
+
+  .name {
+    font-weight: 800;
+    font-size: 16px;
+  }
+
+  .subscribers {
+    font-size: 13px;
+    color: ${({ theme: { grey3 } }) => grey3};
+  }
+`;
+
+export const SubscribeButton = styled.div`
+  padding: 0.6rem 0.8rem;
+  border-radius: 200rem;
+  background-color: ${({ theme: { text } }) => text};
+  color: ${({ theme: { background } }) => background};
+  margin-left: 2rem;
+  font-size: 15px;
+  font-weight: bold;
+`;
