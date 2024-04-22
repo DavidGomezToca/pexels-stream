@@ -89,3 +89,24 @@ export const SubscribeButton = styled.div`
   font-size: 15px;
   font-weight: bold;
 `;
+
+export const DetailsActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+export const DetailsActionButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: ${({ theme: { grey2 } }) => grey2};
+  color: ${({ theme: { text } }) => text};
+  border-radius: 100rem;
+  padding: 0.5rem 0.8rem;
+
+  .divider {
+    border-left: 1px solid ${({ theme: { grey3 } }) => grey3};
+  }
+`;

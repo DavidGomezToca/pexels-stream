@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import {
+  DetailsActionButton,
+  DetailsActions,
   MoreVideosContainer,
   StyledWatchVideoContents,
   SubscribeButton,
@@ -21,6 +23,10 @@ import ReactPlayer from "react-player";
 import { Text } from "../../utils/Text.styles";
 import { faker } from "@faker-js/faker";
 import { RegularVideoPic } from "../regularVideoItem/RegularVideoItem.styles";
+import { HiDotsHorizontal } from "react-icons/hi";
+import { PiListPlusFill } from "react-icons/pi";
+import { IoArrowRedoOutline } from "react-icons/io5";
+import { TiThumbsDown, TiThumbsUp } from "react-icons/ti";
 
 const WatchVideoContents = () => {
   const { videos, fetchVideo, videoToWatchData, isFetchingVideos, text } =
@@ -72,6 +78,27 @@ const WatchVideoContents = () => {
                 </UserAccount>
                 <SubscribeButton>{text.subscribe}</SubscribeButton>
               </VideoDetailsInfo>
+              <DetailsActions>
+                <DetailsActionButton>
+                  <>
+                    <TiThumbsUp size={21} />
+                    <Text>{videoToWatchData?.duration}</Text>
+                  </>
+                  <span className="divider">&nbsp;</span>
+                  <TiThumbsDown size={21} />
+                </DetailsActionButton>
+                <DetailsActionButton>
+                  <IoArrowRedoOutline size={21} />
+                  <Text>{text.share}</Text>
+                </DetailsActionButton>
+                <DetailsActionButton>
+                  <PiListPlusFill size={21} />
+                  <Text>{text.save}</Text>
+                </DetailsActionButton>
+                <DetailsActionButton>
+                  <HiDotsHorizontal size={21} />
+                </DetailsActionButton>
+              </DetailsActions>
             </VideoDetailsActions>
             <VideoDescription>
               <Text>{faker.lorem.paragraphs(5)}</Text>
