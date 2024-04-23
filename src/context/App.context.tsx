@@ -54,7 +54,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [language, setLanguage] = useState<"english" | "french">("english");
   const [searchBarText, setSearchBarText] = useState("");
   const [isMenuSmall, setIsMenuSmall] = useState(false);
-  const [activeMenuText, setActiveMenuText] = useState("Home");
+  const [activeMenuText, setActiveMenuText] = useState("home");
   const [activeCategory, setActiveCategory] = useState("All");
   const [videos, setVideos] = useState<Video[]>([]);
   const [isFetchingVideos, setIsFetchingVideos] = useState(false);
@@ -117,7 +117,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     setSearchBarText,
     isMenuSmall,
     toggleMenuSize,
-    activeMenuText,
+    activeMenuText : LANGUAGE[language][activeMenuText as keyof ITranslations],
     activeCategory,
     setActiveCategory,
     videos,

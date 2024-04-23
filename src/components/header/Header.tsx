@@ -19,6 +19,7 @@ import { useAppContext } from "../../context/App.context";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const [showSettings, setShowSettings] = useState(false);
@@ -31,6 +32,8 @@ const Header = () => {
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
 
+  const { pathname } = useLocation();
+
   useEffect(() => {
     setSearchText(transcript);
     setSearchBarText(transcript);
@@ -40,15 +43,24 @@ const Header = () => {
     return <span>Browser doesn't support speech recognition.</span>;
   }
 
+  const isHomePath = pathname.length === 1;
+
+  if (isHomePath) {
+    document.title = "YouStream";
+  }
+
   return (
     <StyledHeader>
       <LeftSection>
-        <Icon className="menu" onClick={() => toggleMenuSize()}>
+        <Icon
+          className={`${!isHomePath && "disabled"}menu`}
+          onClick={() => toggleMenuSize()}
+        >
           <SlMenu size={17} />
         </Icon>
         <LogoSection to="/">
           <FaYoutube color="#FF0000" size={30} />
-          <Text className="logo">YouStream v0.40.0</Text>
+          <Text className="logo">YouStream v0.41.0</Text>
         </LogoSection>
       </LeftSection>
       <SearchSection>

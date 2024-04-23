@@ -34,4 +34,10 @@ export const Icon = styled.div<{ $showBackground?: boolean }>`
     animation: ${beats} 1s linear infinite;
     color: ${({ theme: { white } }) => white};
   }
+
+  &.disabled {
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
 `;
