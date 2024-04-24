@@ -11,6 +11,8 @@ import { ITranslations, LANGUAGE } from "../utils/translations";
 import { Video, Videos, createClient } from "pexels";
 import { PEXELES_API_KEY } from "../utils/pexels";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../store/store";
+import { changeTheme } from "../store/app.slice";
 
 interface IAppContextValue {
   theme: "light" | "dark";
@@ -50,7 +52,7 @@ interface IAppContextProviderProps {
 const client = createClient(PEXELES_API_KEY);
 
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [language, setLanguage] = useState<"english" | "french">("english");
   const [searchBarText, setSearchBarText] = useState("");
   const [isMenuSmall, setIsMenuSmall] = useState(false);
@@ -60,6 +62,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [isFetchingVideos, setIsFetchingVideos] = useState(false);
   const [videoToWatch, setVideoToWatch] = useState<number>(0);
   const [videoToWatchData, setVideoToWatchData] = useState<Video>();
+  const dispatch = useAppDispatch();
 
   let navigate = useNavigate();
 
@@ -98,7 +101,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     setIsFetchingVideos(false);
   };
   const toggleTheme = () => {
-    setTheme((theme) => (theme === "light" ? "dark" : "light"));
+    dispatch(changeTheme());
   };
   const toggleLanguage = () => {
     setLanguage((language) => (language === "english" ? "french" : "english"));
@@ -108,7 +111,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   };
 
   const value = {
-    theme,
+    theme: useAppSelector((state) => state.app.theme),
     language,
     toggleTheme,
     toggleLanguage,
@@ -117,7 +120,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     setSearchBarText,
     isMenuSmall,
     toggleMenuSize,
-    activeMenuText : LANGUAGE[language][activeMenuText as keyof ITranslations],
+    activeMenuText: LANGUAGE[language][activeMenuText as keyof ITranslations],
     activeCategory,
     setActiveCategory,
     videos,

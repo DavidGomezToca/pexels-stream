@@ -12,10 +12,11 @@
 
 - **STACK :**
 
-  - **YOU STREAM** : `0.41.0`
+  - **YOU STREAM** : `0.42.0`
   - **FAKER** : `8.4.1`
   - **REACT** : `18.2.0`
   - **PEXELS** : `1.4.0`
+  - **TOOLKIT** : `2.2.3`
   - **REACT ICONS** : `5.0.1`
   - **REACT PLAYER** : `2.16.0`
   - **REACT TOOLTIP** : `5.26.3`
