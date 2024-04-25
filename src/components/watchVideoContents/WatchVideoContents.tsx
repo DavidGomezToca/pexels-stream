@@ -39,6 +39,7 @@ const WatchVideoContents = () => {
     if (id) {
       fetchVideo(id);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   if (isFetchingVideos) {

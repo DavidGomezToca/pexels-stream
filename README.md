@@ -12,7 +12,7 @@
 
 - **STACK :**
 
-  - **YOU STREAM** : `0.42.0`
+  - **YOU STREAM** : `1.0.0`
   - **FAKER** : `8.4.1`
   - **REACT** : `18.2.0`
   - **PEXELS** : `1.4.0`

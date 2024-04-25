@@ -28,7 +28,6 @@ const Header = () => {
   const {
     transcript,
     listening,
-    resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
 
@@ -37,6 +36,7 @@ const Header = () => {
   useEffect(() => {
     setSearchText(transcript);
     setSearchBarText(transcript);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [transcript]);
 
   if (!browserSupportsSpeechRecognition) {
@@ -60,7 +60,7 @@ const Header = () => {
         </Icon>
         <LogoSection to="/">
           <FaYoutube color="#FF0000" size={30} />
-          <Text className="logo">YouStream v0.42.0</Text>
+          <Text className="logo">YouStream v1.0.0</Text>
         </LogoSection>
       </LeftSection>
       <SearchSection>

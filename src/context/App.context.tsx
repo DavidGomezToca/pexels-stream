@@ -52,10 +52,10 @@ interface IAppContextProviderProps {
 const client = createClient(PEXELES_API_KEY);
 
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [language, setLanguage] = useState<"english" | "french">("english");
   const [searchBarText, setSearchBarText] = useState("");
   const [isMenuSmall, setIsMenuSmall] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeMenuText, setActiveMenuText] = useState("home");
   const [activeCategory, setActiveCategory] = useState("All");
   const [videos, setVideos] = useState<Video[]>([]);
@@ -70,6 +70,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     if (videoToWatch !== 0) {
       navigate(`/${videoToWatch}`);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoToWatch]);
 
   useEffect(() => {
