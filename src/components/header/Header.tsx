@@ -46,7 +46,7 @@ const Header = () => {
   const isHomePath = pathname.length === 1;
 
   if (isHomePath) {
-    document.title = "YouStream";
+    document.title = "PexelsStream";
   }
 
   return (
@@ -60,7 +60,7 @@ const Header = () => {
         </Icon>
         <LogoSection to="/">
           <FaYoutube color="#FF0000" size={30} />
-          <Text className="logo">YouStream v1.0.0</Text>
+          <Text className="logo">PexelsStream v1.1.0</Text>
         </LogoSection>
       </LeftSection>
       <SearchSection>

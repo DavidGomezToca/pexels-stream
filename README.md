@@ -1,4 +1,4 @@
-# _YOU STREAM_
+# _PEXELS STREAM_
 
 ![THUMBNAIL](resources/img/Thumbnail_1.png)
 
@@ -6,13 +6,13 @@
 
 - **DESCRIPTION :**
 
-  Welcome to You Stream, your ultimate destination for streaming and sharing videos online. With a vast library of content spanning every genre imaginable, You Stream offers endless entertainment for users worldwide. Whether you're a creator looking to share your talents with the world or a viewer searching for the latest trending videos, You Stream has you covered. Explore personalized recommendations, engage with your favorite creators, and discover new content to enjoy. Join our vibrant community today and start streaming on You Stream!
+  Welcome to Pexels Stream, your ultimate destination for streaming and sharing videos online. With a vast library of content spanning every genre imaginable, Pexels Stream offers endless entertainment for users worldwide. Whether you're a creator looking to share your talents with the world or a viewer searching for the latest trending videos, Pexels Stream has you covered. Explore personalized recommendations, engage with your favorite creators, and discover new content to enjoy. Join our vibrant community today and start streaming on Pexels Stream!
 
 ---
 
 - **STACK :**
 
-  - **YOU STREAM** : `1.0.0`
+  - **PEXELS STREAM** : `1.1.0`
   - **FAKER** : `8.4.1`
   - **REACT** : `18.2.0`
   - **PEXELS** : `1.4.0`
@@ -29,3 +29,4 @@
 - **CREDITS :**
 
   - **Author : [David Gómez](https://github.com/DavidGomezToca)**
+  - **Videos : [PEXELS](https://www.pexels.com)**
