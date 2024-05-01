@@ -70,7 +70,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     if (videoToWatch !== 0) {
       navigate(`/${videoToWatch}`);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoToWatch]);
 
   useEffect(() => {
@@ -82,6 +82,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
 
   const fetchVideos = async (query: string) => {
     setIsFetchingVideos(true);
+    query = query ? query : "1";
     try {
       const response = await client.videos.search({
         query,
