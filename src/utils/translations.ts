@@ -153,8 +153,7 @@ const french: ITranslations = {
   learning: "Apprentissage",
   fashionBeauty: "Fashion beauté",
   podcasts: "Baladodiffusions",
-  signInMenuText:
-    "Connectez-vous pour aimer les vidéos, commenter et vous abonner.",
+  signInMenuText: "Connectez-vous pour aimer les vidéos et commenter.",
   all: "All",
   sports: "Des sports",
   boxing: "Boxe",

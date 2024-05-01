@@ -25,18 +25,15 @@ const Header = () => {
   const [showSettings, setShowSettings] = useState(false);
   const [searchText, setSearchText] = useState("");
   const { text, setSearchBarText, toggleMenuSize } = useAppContext();
-  const {
-    transcript,
-    listening,
-    browserSupportsSpeechRecognition,
-  } = useSpeechRecognition();
+  const { transcript, listening, browserSupportsSpeechRecognition } =
+    useSpeechRecognition();
 
   const { pathname } = useLocation();
 
   useEffect(() => {
     setSearchText(transcript);
     setSearchBarText(transcript);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [transcript]);
 
   if (!browserSupportsSpeechRecognition) {
@@ -99,7 +96,7 @@ const Header = () => {
           <CgMoreVerticalAlt size={21} />
         </Icon>
         <AuthButton />
-        {showSettings && <Settings />}
+        {showSettings && <Settings setShowSettings={setShowSettings} />}
       </HeaderMoreSection>
     </StyledHeader>
   );

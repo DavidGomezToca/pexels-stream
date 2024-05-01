@@ -29,8 +29,8 @@ const VideoShorts = ({ videos }: IVideoShortsProps) => {
         <Text>{text.shorts}</Text>
       </VideoShortsHeading>
       <ShortsVideosContainer>
-        {videosList.map((video, index) => (
-          <ShortsVideoItem video={video} />
+        {videosList.map((video) => (
+          <ShortsVideoItem key={video.id} video={video} />
         ))}
       </ShortsVideosContainer>
       <MoreLessContainer>

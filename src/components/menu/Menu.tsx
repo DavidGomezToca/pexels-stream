@@ -31,7 +31,7 @@ const Menu = () => {
       <StyledMenu>
         {MENU_LARGE.map(({ title, list }, index) => (
           <>
-            <LargeMenuSection>
+            <LargeMenuSection key={index}>
               {title && (
                 <Text className="title">
                   {text[title as keyof ITranslations]}

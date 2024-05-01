@@ -39,7 +39,7 @@ const WatchVideoContents = () => {
     if (id) {
       fetchVideo(id);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   if (isFetchingVideos) {
@@ -108,8 +108,8 @@ const WatchVideoContents = () => {
         </WatchVideosContainer>
         <MoreVideosContainer>
           <Categories />
-          {videos.map((video, index) => (
-            <RegularVideoItem key={index} smallView={true} video={video} />
+          {videos.map((video) => (
+            <RegularVideoItem key={video.id} smallView={true} video={video} />
           ))}
         </MoreVideosContainer>
       </StyledWatchVideoContents>

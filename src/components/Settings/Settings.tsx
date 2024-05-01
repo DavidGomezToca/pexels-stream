@@ -5,7 +5,7 @@ import { GoMoon } from "react-icons/go";
 import { Text } from "../../utils/Text.styles";
 import { useAppContext } from "../../context/App.context";
 
-const Settings = () => {
+const Settings = ({ setShowSettings }: any) => {
   const { text, theme, language, toggleTheme, toggleLanguage } =
     useAppContext();
   const SETTINGS = [
@@ -13,13 +13,19 @@ const Settings = () => {
       label: text.language,
       icon: <HiLanguage size={23} />,
       value: text[language === "english" ? "french" : "english"],
-      onClick: () => toggleLanguage(),
+      onClick: () => {
+        toggleLanguage();
+        setShowSettings((currentState: boolean) => !currentState);
+      },
     },
     {
       label: text.appearance,
       icon: <GoMoon size={23} />,
       value: text[theme === "dark" ? "light" : "dark"],
-      onClick: () => toggleTheme(),
+      onClick: () => {
+        toggleTheme();
+        setShowSettings((currentState: boolean) => !currentState);
+      },
     },
   ];
 
