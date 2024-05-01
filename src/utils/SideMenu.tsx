@@ -32,7 +32,7 @@ export const MENU_SMALL = [
 
 export const MENU_LARGE = [
   {
-    title: "",
+    title: "a",
     list: [
       { name: "home", icon: <MdHome /> },
       { name: "shorts", icon: <SiYoutubeshorts /> },
@@ -40,7 +40,7 @@ export const MENU_LARGE = [
     ],
   },
   {
-    title: "",
+    title: "b",
     list: [
       { name: "you", icon: <PiMonitorPlayFill /> },
       { name: "history", icon: <MdHistory /> },
@@ -62,7 +62,7 @@ export const MENU_LARGE = [
     ],
   },
   {
-    title: "",
+    title: "c",
     list: [{ name: "browseChannels", icon: <IoMdAddCircleOutline /> }],
   },
   {
@@ -74,7 +74,7 @@ export const MENU_LARGE = [
     ],
   },
   {
-    title: "",
+    title: "d",
     list: [
       { name: "settings", icon: <PiGearBold /> },
       { name: "reportHistory", icon: <CgFlag /> },
