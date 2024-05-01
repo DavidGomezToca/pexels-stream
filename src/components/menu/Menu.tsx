@@ -16,6 +16,8 @@ const Menu = () => {
             active={
               activeMenuText.toLowerCase() ===
               text[name as keyof ITranslations].toLowerCase()
+                ? "true"
+                : "false"
             }
             className="small"
             key={name}
@@ -43,6 +45,8 @@ const Menu = () => {
                     active={
                       activeMenuText.toLowerCase() ===
                       text[name as keyof ITranslations].toLowerCase()
+                        ? "true"
+                        : "false"
                     }
                     className="large"
                     key={name}

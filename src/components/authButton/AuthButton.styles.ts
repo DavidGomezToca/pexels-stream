@@ -4,7 +4,7 @@ export const StyledAuthButton = styled.div`
   width: 150px;
   color: ${({ theme: { authBlue } }) => authBlue};
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
   border: 2px solid ${({ theme: { grey2 } }) => grey2};

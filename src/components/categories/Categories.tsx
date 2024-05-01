@@ -17,7 +17,11 @@ const Categories = () => {
         {CATEGORIES.map((name, index) => (
           <CategoryItem
             key={index}
-            active={name.toLowerCase() === activeCategory.toLowerCase()}
+            active={
+              name.toLowerCase() === activeCategory.toLowerCase()
+                ? "true"
+                : "false"
+            }
             onClick={() => setActiveCategory(name)}
           >
             <Text>{text[name as keyof ITranslations]}</Text>
