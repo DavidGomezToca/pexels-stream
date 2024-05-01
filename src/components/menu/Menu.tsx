@@ -30,8 +30,8 @@ const Menu = () => {
     return (
       <StyledMenu>
         {MENU_LARGE.map(({ title, list }, index) => (
-          <>
-            <LargeMenuSection key={title + index}>
+          <div key={title}>
+            <LargeMenuSection>
               {title && (
                 <Text className="title">
                   {text[title as keyof ITranslations]}
@@ -54,12 +54,12 @@ const Menu = () => {
               </>
             </LargeMenuSection>
             {index === 1 && (
-              <LargeMenuSection key={title + index} className="text">
+              <LargeMenuSection className="text">
                 <Text>{text.signInMenuText}</Text>
                 <AuthButton />
               </LargeMenuSection>
             )}
-          </>
+          </div>
         ))}
       </StyledMenu>
     );
