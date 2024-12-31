@@ -65,8 +65,9 @@ const RegularVideoItem = ({ video, smallView }: IRegularVideoItemProps) => {
           </Text>
           <Text className="name">{video.user.name}</Text>
           <Text className="details">
-            {video.duration}M views <span className="dot">&#9679;</span>2 hours
-            ago
+            {Math.floor(video.duration * 1.2 + 2)} M views{" "}
+            <span className="dot">&#9679;</span>
+            {Math.floor(video.duration / 0.8 + 5)} days ago
           </Text>
         </RegularVideoTitleSubTitle>
       </RegularVideoContent>

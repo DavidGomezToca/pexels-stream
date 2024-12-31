@@ -1,3 +1,6 @@
+# Visual Studio cache directory
+.vscode
+
 # dependencies
 /node_modules
 /.pnp

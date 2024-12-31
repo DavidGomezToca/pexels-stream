@@ -33,8 +33,7 @@ const Header = () => {
   useEffect(() => {
     setSearchText(transcript);
     setSearchBarText(transcript);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [transcript]);
+  }, [setSearchBarText, transcript]);
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;

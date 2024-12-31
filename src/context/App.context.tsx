@@ -54,7 +54,7 @@ const client = createClient(PEXELES_API_KEY);
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [language, setLanguage] = useState<"english" | "french">("english");
   const [searchBarText, setSearchBarText] = useState("");
-  const [isMenuSmall, setIsMenuSmall] = useState(false);
+  const [isMenuSmall, setIsMenuSmall] = useState(window.innerWidth <= 1200);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeMenuText, setActiveMenuText] = useState("home");
   const [activeCategory, setActiveCategory] = useState("All");
