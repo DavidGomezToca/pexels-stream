@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledWatchVideoContents = styled.div`
   width: 100%;
-  height: 94.2vh;
+  height: 100vh;
   display: grid;
   gap: 1.5vw;
   grid-template-columns: 71.5vw 24vw;

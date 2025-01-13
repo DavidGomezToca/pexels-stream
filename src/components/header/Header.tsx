@@ -12,7 +12,6 @@ import { Icon } from "../../utils/Icon.styles";
 import { SlMenu } from "react-icons/sl";
 import { FaMicrophone, FaYoutube } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
-import AuthButton from "../authButton/AuthButton";
 import { CgMoreVerticalAlt } from "react-icons/cg";
 import Settings from "../Settings/Settings";
 import { useAppContext } from "../../context/App.context";
@@ -56,7 +55,7 @@ const Header = () => {
         </Icon>
         <LogoSection to="/">
           <FaYoutube color="#FF0000" size={30} />
-          <Text className="logo">PexelsStream v1.1.0</Text>
+          <Text className="logo">PexelsStream</Text>
         </LogoSection>
       </LeftSection>
       <SearchSection>
@@ -94,7 +93,6 @@ const Header = () => {
         >
           <CgMoreVerticalAlt size={21} />
         </Icon>
-        <AuthButton />
         {showSettings && <Settings setShowSettings={setShowSettings} />}
       </HeaderMoreSection>
     </StyledHeader>

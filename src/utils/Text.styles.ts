@@ -13,4 +13,8 @@ export const Text = styled.p`
     color: ${(props) => props.theme.authBlue};
     font-weight: bold;
   }
+  &.category {
+    font-size: 16px;
+    font-style: italic;
+  }
 `;
