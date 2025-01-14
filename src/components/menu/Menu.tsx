@@ -11,29 +11,30 @@ const Menu = () => {
   const {
     isMenuSmall,
     text,
-    activeMenuText,
+    // activeMenuText,
     activeCategory,
     setActiveCategory,
   } = useAppContext();
   if (isMenuSmall) {
     return (
-      <StyledMenu>
-        {MENU_SMALL.map(({ name, icon }) => (
-          <MenuItem
-            active={
-              activeMenuText.toLowerCase() ===
-              text[name as keyof ITranslations].toLowerCase()
-                ? "true"
-                : "false"
-            }
-            className="small"
-            key={name}
-          >
-            {icon}
-            <Text>{text[name as keyof ITranslations]}</Text>
-          </MenuItem>
-        ))}
-      </StyledMenu>
+      <></>
+      // <StyledMenu>
+      //   {MENU_SMALL.map(({ name, icon }) => (
+      //     <MenuItem
+      //       active={
+      //         activeMenuText.toLowerCase() ===
+      //         text[name as keyof ITranslations].toLowerCase()
+      //           ? "true"
+      //           : "false"
+      //       }
+      //       className="small"
+      //       key={name}
+      //     >
+      //       {icon}
+      //       <Text>{text[name as keyof ITranslations]}</Text>
+      //     </MenuItem>
+      //   ))}
+      // </StyledMenu>
     );
   } else {
     return (

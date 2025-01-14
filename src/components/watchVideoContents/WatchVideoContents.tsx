@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   DetailsActionButton,
   DetailsActions,
@@ -32,6 +32,22 @@ const WatchVideoContents = () => {
   const { videos, fetchVideo, videoToWatchData, isFetchingVideos, text } =
     useAppContext();
   const { id } = useParams();
+  const [like, setLike] = useState(false);
+  const [dislike, setDislike] = useState(false);
+
+  const handleLike = () => {
+    setLike((prevLike) => !prevLike);
+    if (!like) {
+      setDislike(false);
+    }
+  };
+
+  const handleDislike = () => {
+    setDislike((prevDislike) => !prevDislike);
+    if (!dislike) {
+      setLike(false);
+    }
+  };
 
   document.title = getTitle(videoToWatchData?.url!);
 
@@ -82,11 +98,21 @@ const WatchVideoContents = () => {
               <DetailsActions>
                 <DetailsActionButton>
                   <>
-                    <TiThumbsUp size={21} />
-                    <Text>{videoToWatchData?.duration}</Text>
+                    <TiThumbsUp
+                      size={21}
+                      color={`${like ? "blue" : ""}`}
+                      onClick={handleLike}
+                    />
+                    <Text>
+                      {(videoToWatchData?.duration ?? 0) * 2 + (like ? 1 : 0)}
+                    </Text>
                   </>
                   <span className="divider">&nbsp;</span>
-                  <TiThumbsDown size={21} />
+                  <TiThumbsDown
+                    size={21}
+                    color={`${dislike ? "red" : ""}`}
+                    onClick={handleDislike}
+                  />
                 </DetailsActionButton>
                 <DetailsActionButton>
                   <IoArrowRedoOutline size={21} />
