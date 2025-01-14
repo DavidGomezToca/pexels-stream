@@ -88,6 +88,10 @@ export const SubscribeButton = styled.div`
   margin-left: 2rem;
   font-size: 15px;
   font-weight: bold;
+
+  &.subscribed {
+    background-color: gold;
+  }
 `;
 
 export const DetailsActions = styled.div`

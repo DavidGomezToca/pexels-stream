@@ -34,6 +34,7 @@ const WatchVideoContents = () => {
   const { id } = useParams();
   const [like, setLike] = useState(false);
   const [dislike, setDislike] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
 
   const handleLike = () => {
     setLike((prevLike) => !prevLike);
@@ -49,12 +50,19 @@ const WatchVideoContents = () => {
     }
   };
 
+  const handleSubscribed = () => {
+    setSubscribed((prevSubscribed) => !prevSubscribed);
+  };
+
   document.title = getTitle(videoToWatchData?.url!);
 
   useEffect(() => {
     if (id) {
       fetchVideo(id);
     }
+    setLike(false);
+    setDislike(false);
+    setSubscribed(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
@@ -93,7 +101,12 @@ const WatchVideoContents = () => {
                     {videoToWatchData?.duration}k {text.subscribers}
                   </Text>
                 </UserAccount>
-                <SubscribeButton>{text.subscribe}</SubscribeButton>
+                <SubscribeButton
+                  className={`${subscribed ? "subscribed" : ""}`}
+                  onClick={handleSubscribed}
+                >{`${
+                  subscribed ? text.subscribed : text.subscribe
+                }`}</SubscribeButton>
               </VideoDetailsInfo>
               <DetailsActions>
                 <DetailsActionButton>

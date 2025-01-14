@@ -54,6 +54,7 @@ export interface ITranslations {
   save: string;
   share: string;
   subscribe: string;
+  subscribed: string;
   views: string;
   subscribers: string;
 }
@@ -114,6 +115,7 @@ const english: ITranslations = {
   save: "Save",
   share: "Share",
   subscribe: "Subscribe",
+  subscribed: "Subscribed",
   views: "Views",
   subscribers: "Subscribers",
 };
@@ -174,6 +176,7 @@ const french: ITranslations = {
   save: "Sauvegarder",
   share: "Partager",
   subscribe: "S'abonner",
+  subscribed: "Abonné",
   views: "Vues",
   subscribers: "Les abonnés",
 };
