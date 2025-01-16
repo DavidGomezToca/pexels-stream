@@ -21,6 +21,20 @@ const VideoShorts = ({ videos }: IVideoShortsProps) => {
   const [showLess, setShowLess] = useState(true);
   const videosList = showLess ? videos.slice(0, videos.length / 2) : videos;
   const { text } = useAppContext();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [videosByRow, setVideosByRow] = React.useState(
+    window.innerWidth <= 450
+      ? "one"
+      : window.innerWidth <= 650
+      ? "two"
+      : window.innerWidth <= 900
+      ? "three"
+      : window.innerWidth <= 1200
+      ? "four"
+      : window.innerWidth <= 1500
+      ? "five"
+      : "six"
+  );
 
   return (
     <StyledVideoShorts>
@@ -28,7 +42,7 @@ const VideoShorts = ({ videos }: IVideoShortsProps) => {
         <SiYoutubeshorts size={25} color="red" />
         <Text>{text.shorts}</Text>
       </VideoShortsHeading>
-      <ShortsVideosContainer>
+      <ShortsVideosContainer className={videosByRow}>
         {videosList.map((video) => (
           <ShortsVideoItem key={video.id} video={video} />
         ))}

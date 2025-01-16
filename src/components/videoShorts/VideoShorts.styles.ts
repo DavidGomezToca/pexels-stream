@@ -32,6 +32,25 @@ export const ShortsVideosContainer = styled.div`
   column-gap: 1rem;
   row-gap: 1rem;
   margin-top: 1.5rem;
+
+  &.six {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+  &.five {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  &.four {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  &.three {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  &.two {
+    grid-template-columns: 1fr 1fr;
+  }
+  &.one {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const MoreLessButton = styled.button`

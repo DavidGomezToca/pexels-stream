@@ -8,7 +8,19 @@ export const StyledHomepageVideos = styled.div`
 
 export const RegularVideoThumbnailsContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 1rem;
   row-gap: 3rem;
+
+  &.four {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  &.three {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  &.two {
+    grid-template-columns: 1fr 1fr;
+  }
+  &.one {
+    grid-template-columns: 1fr;
+  }
 `;
