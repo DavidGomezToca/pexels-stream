@@ -12,6 +12,7 @@ import ReactPlayer from "react-player";
 import { useAppContext } from "../../context/App.context";
 import { Text } from "../../utils/Text.styles";
 import { getTitle } from "../../utils/videos";
+import { ITranslations } from "../../utils/translations";
 
 interface IRegularVideoItemProps {
   video: Video;
@@ -22,6 +23,9 @@ const RegularVideoItem = ({ video, smallView }: IRegularVideoItemProps) => {
   const [playTrailer, setPlayTrailer] = useState(false);
   const { isMenuSmall, setVideoToWatch } = useAppContext();
   const TITLE_LENGTH = 50;
+  const views = Math.floor(video.duration * 1.2 + 2);
+  const dateUpload = Math.floor(video.duration / 0.8 + 5);
+  const { text } = useAppContext();
 
   return (
     <StyledRegularVideoItem
@@ -65,9 +69,19 @@ const RegularVideoItem = ({ video, smallView }: IRegularVideoItemProps) => {
           </Text>
           <Text className="name">{video.user.name}</Text>
           <Text className="details">
-            {Math.floor(video.duration * 1.2 + 2)} M views{" "}
+            {views} M {text["views" as keyof ITranslations]}
             <span className="dot">&#9679;</span>
-            {Math.floor(video.duration / 0.8 + 5)} days ago
+            {dateUpload >= 30
+              ? `${Math.floor(dateUpload / 30)} ${
+                  Math.floor(dateUpload / 30) === 1
+                    ? text["month" as keyof ITranslations]
+                    : text["months" as keyof ITranslations]
+                }`
+              : `${dateUpload} ${
+                  dateUpload === 1
+                    ? text["day" as keyof ITranslations]
+                    : text["days" as keyof ITranslations]
+                }`}
           </Text>
         </RegularVideoTitleSubTitle>
       </RegularVideoContent>

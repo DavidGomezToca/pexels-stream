@@ -56,6 +56,10 @@ export interface ITranslations {
   subscribe: string;
   subscribed: string;
   views: string;
+  day: string;
+  days: string;
+  month: string;
+  months: string;
   subscribers: string;
 }
 
@@ -117,6 +121,10 @@ const english: ITranslations = {
   subscribe: "Subscribe",
   subscribed: "Subscribed",
   views: "Views",
+  day: "Day",
+  days: "Days",
+  month: "Month",
+  months: "Months",
   subscribers: "Subscribers",
 };
 
@@ -125,10 +133,10 @@ const french: ITranslations = {
   settings: "Paramètres",
   appearance: "Apparence",
   dark: "Sombre",
-  light: "Lumière",
-  language: "langue",
-  english: "Anglaise",
-  french: "Française",
+  light: "Clair",
+  language: "Langue",
+  english: "Anglais",
+  french: "Français",
   search: "Recherche dans Pexels",
   voiceSearch: "Recherche avec ta voix",
   history: "Histoire",
@@ -178,6 +186,10 @@ const french: ITranslations = {
   subscribe: "S'abonner",
   subscribed: "Abonné",
   views: "Vues",
+  day: "Jour",
+  days: "Jours",
+  month: "Mois",
+  months: "Mois",
   subscribers: "Les abonnés",
 };
 

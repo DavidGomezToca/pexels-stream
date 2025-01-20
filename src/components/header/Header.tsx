@@ -88,7 +88,7 @@ const Header = () => {
       <HeaderMoreSection>
         <Icon
           data-tooltip-id="settings"
-          data-tooltip-content="Settings"
+          data-tooltip-content={text.settings}
           onClick={() => setShowSettings((currentState) => !currentState)}
         >
           <CgMoreVerticalAlt size={21} />

@@ -1,6 +1,6 @@
 {
   "name": "pexels-stream",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "private": true,
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
