@@ -47,12 +47,14 @@ const Header = () => {
   return (
     <StyledHeader>
       <LeftSection>
-        <Icon
-          className={`${!isHomePath && "disabled"}menu`}
-          onClick={() => toggleMenuSize()}
-        >
-          <SlMenu size={17} />
-        </Icon>
+        {window.innerWidth > 1200 && (
+          <Icon
+            className={`${!isHomePath && "disabled"}menu`}
+            onClick={() => toggleMenuSize()}
+          >
+            <SlMenu size={17} />
+          </Icon>
+        )}
         <LogoSection to="/">
           <FaYoutube color="#FF0000" size={30} />
           <Text className="logo">PexelsStream</Text>

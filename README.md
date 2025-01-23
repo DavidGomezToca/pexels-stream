@@ -12,12 +12,13 @@
 
 - **STACK :**
 
-  - **PEXELS STREAM** : `1.7.0`
+  - **PEXELS STREAM** : `1.8.0`
   - **FAKER** : `8.4.1`
   - **REACT** : `18.2.0`
   - **PEXELS** : `1.4.0`
   - **TOOLKIT** : `2.2.3`
   - **REACT ICONS** : `5.0.1`
+  - **REACT SHARE** : `5.1.2`
   - **REACT PLAYER** : `2.16.0`
   - **REACT TOOLTIP** : `5.26.3`
   - **REACT ROUTER DOM** : `6.22.3`

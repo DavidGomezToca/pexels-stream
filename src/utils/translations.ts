@@ -190,7 +190,7 @@ const french: ITranslations = {
   days: "Jours",
   month: "Mois",
   months: "Mois",
-  subscribers: "Les abonnés",
+  subscribers: "Abonnés",
 };
 
 export const LANGUAGE = {

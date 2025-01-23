@@ -9,9 +9,6 @@ import VideoShorts from "../videoShorts/VideoShorts";
 
 const HomepageVideos = () => {
   const { videos } = useAppContext();
-  const FIRST_VIDEO_SECTION = videos.slice(0, 8);
-  const SECOND_VIDEO_SECTION = videos.slice(8, 20);
-  const THIRD_VIDEO_SECTION = videos.slice(20, 28);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [videosByRow, setVideosByRow] = React.useState(
     window.innerWidth <= 450
@@ -21,6 +18,31 @@ const HomepageVideos = () => {
       : window.innerWidth <= 900
       ? "three"
       : "four"
+  );
+  const normalVideosCantity =
+    videosByRow === "one"
+      ? 3
+      : videosByRow === "two"
+      ? 4
+      : videosByRow === "three"
+      ? 6
+      : 8;
+  const shortVideosCantity =
+    videosByRow === "one"
+      ? 4
+      : videosByRow === "two"
+      ? 8
+      : videosByRow === "three"
+      ? 12
+      : 24;
+  const FIRST_VIDEO_SECTION = videos.slice(0, normalVideosCantity);
+  const SECOND_VIDEO_SECTION = videos.slice(
+    normalVideosCantity,
+    normalVideosCantity + shortVideosCantity
+  );
+  const THIRD_VIDEO_SECTION = videos.slice(
+    normalVideosCantity + shortVideosCantity,
+    normalVideosCantity + shortVideosCantity + normalVideosCantity
   );
 
   return (

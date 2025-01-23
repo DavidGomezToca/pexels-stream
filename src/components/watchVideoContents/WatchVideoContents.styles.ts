@@ -114,3 +114,13 @@ export const DetailsActionButton = styled.div`
     border-left: 1px solid ${({ theme: { grey3 } }) => grey3};
   }
 `;
+
+export const SectionThumbsUp = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ShareButton = styled.div`
+  display: flex;
+  align-items: center;
+`;

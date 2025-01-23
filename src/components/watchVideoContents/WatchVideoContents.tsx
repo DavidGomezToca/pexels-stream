@@ -12,6 +12,7 @@ import {
   VideoDetailsInfo,
   VideoScreen,
   WatchVideosContainer,
+  ShareButton,
 } from "./WatchVideoContents.styles";
 import Categories from "../categories/Categories";
 import { useAppContext } from "../../context/App.context";
@@ -27,6 +28,7 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { PiListPlusFill } from "react-icons/pi";
 import { IoArrowRedoOutline } from "react-icons/io5";
 import { TiThumbsDown, TiThumbsUp } from "react-icons/ti";
+import { EmailShareButton } from "react-share";
 
 const WatchVideoContents = () => {
   const { videos, fetchVideo, videoToWatchData, isFetchingVideos, text } =
@@ -128,8 +130,12 @@ const WatchVideoContents = () => {
                   />
                 </DetailsActionButton>
                 <DetailsActionButton>
-                  <IoArrowRedoOutline size={21} />
-                  <Text>{text.share}</Text>
+                  <EmailShareButton url={window.location.href}>
+                    <ShareButton>
+                      <IoArrowRedoOutline size={21} />
+                      <Text>{" " + text.share}</Text>
+                    </ShareButton>
+                  </EmailShareButton>
                 </DetailsActionButton>
                 <DetailsActionButton>
                   <PiListPlusFill size={21} />
