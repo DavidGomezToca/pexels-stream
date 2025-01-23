@@ -24,19 +24,28 @@ import ReactPlayer from "react-player";
 import { Text } from "../../utils/Text.styles";
 import { faker } from "@faker-js/faker";
 import { RegularVideoPic } from "../regularVideoItem/RegularVideoItem.styles";
-import { HiDotsHorizontal } from "react-icons/hi";
+// import { HiDotsHorizontal } from "react-icons/hi";
 import { PiListPlusFill } from "react-icons/pi";
 import { IoArrowRedoOutline } from "react-icons/io5";
 import { TiThumbsDown, TiThumbsUp } from "react-icons/ti";
 import { EmailShareButton } from "react-share";
 
 const WatchVideoContents = () => {
-  const { videos, fetchVideo, videoToWatchData, isFetchingVideos, text } =
-    useAppContext();
+  const {
+    videos,
+    fetchVideo,
+    videoToWatchData,
+    isFetchingVideos,
+    text,
+    language,
+  } = useAppContext();
   const { id } = useParams();
   const [like, setLike] = useState(false);
   const [dislike, setDislike] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [translatedTitle, setTranslatedTitle] = useState("Video Title");
+  // const [language, setLanguage] = useState("fr"); // Default language is French
 
   const handleLike = () => {
     setLike((prevLike) => !prevLike);
@@ -56,6 +65,33 @@ const WatchVideoContents = () => {
     setSubscribed((prevSubscribed) => !prevSubscribed);
   };
 
+  const handleSaved = () => {
+    setSaved((prevSaved) => !prevSaved);
+  };
+
+  const translateText = async (
+    text: string,
+    targetLang: string
+  ): Promise<void> => {
+    if (language === "english") {
+      setTranslatedTitle(getTitle(videoToWatchData?.url!));
+      return;
+    }
+    try {
+      const response = await fetch(
+        `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
+          text
+        )}&langpair=en|${targetLang}`
+      );
+      const data = await response.json();
+      if (data?.responseData?.translatedText) {
+        setTranslatedTitle(data.responseData.translatedText);
+      }
+    } catch (error) {
+      console.error("Error fetching translation:", error);
+    }
+  };
+
   document.title = getTitle(videoToWatchData?.url!);
 
   useEffect(() => {
@@ -65,10 +101,19 @@ const WatchVideoContents = () => {
     setLike(false);
     setDislike(false);
     setSubscribed(false);
+    setSaved(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, [id, language]);
 
-  if (isFetchingVideos) {
+  useEffect(() => {
+    if (videoToWatchData?.url) {
+      const title = getTitle(videoToWatchData.url!);
+      translateText(title, "fr");
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [videoToWatchData?.url, language]);
+
+  if (isFetchingVideos || !videoToWatchData) {
     return <LoadingBackdrop />;
   }
 
@@ -89,9 +134,7 @@ const WatchVideoContents = () => {
             />
           </VideoScreen>
           <VideoDetails>
-            <Text className="videoScreenTitle">
-              {getTitle(videoToWatchData?.url + "")}
-            </Text>
+            <Text className="videoScreenTitle">{translatedTitle}</Text>
             <VideoDetailsActions>
               <VideoDetailsInfo>
                 <RegularVideoPic>
@@ -104,18 +147,18 @@ const WatchVideoContents = () => {
                   </Text>
                 </UserAccount>
                 <SubscribeButton
-                  className={`${subscribed ? "subscribed" : ""}`}
+                  className={subscribed ? "subscribed" : ""}
                   onClick={handleSubscribed}
-                >{`${
-                  subscribed ? text.subscribed : text.subscribe
-                }`}</SubscribeButton>
+                >
+                  {subscribed ? text.subscribed : text.subscribe}
+                </SubscribeButton>
               </VideoDetailsInfo>
               <DetailsActions>
                 <DetailsActionButton>
                   <>
                     <TiThumbsUp
                       size={21}
-                      color={`${like ? "blue" : ""}`}
+                      color={like ? "blue" : ""}
                       onClick={handleLike}
                     />
                     <Text>
@@ -125,7 +168,7 @@ const WatchVideoContents = () => {
                   <span className="divider">&nbsp;</span>
                   <TiThumbsDown
                     size={21}
-                    color={`${dislike ? "red" : ""}`}
+                    color={dislike ? "red" : ""}
                     onClick={handleDislike}
                   />
                 </DetailsActionButton>
@@ -133,17 +176,20 @@ const WatchVideoContents = () => {
                   <EmailShareButton url={window.location.href}>
                     <ShareButton>
                       <IoArrowRedoOutline size={21} />
-                      <Text>{" " + text.share}</Text>
+                      <Text>{text.share}</Text>
                     </ShareButton>
                   </EmailShareButton>
                 </DetailsActionButton>
-                <DetailsActionButton>
+                <DetailsActionButton
+                  className={saved ? "saved" : ""}
+                  onClick={handleSaved}
+                >
                   <PiListPlusFill size={21} />
-                  <Text>{text.save}</Text>
+                  <Text>{saved ? text.saved : text.save}</Text>
                 </DetailsActionButton>
-                <DetailsActionButton>
+                {/* <DetailsActionButton>
                   <HiDotsHorizontal size={21} />
-                </DetailsActionButton>
+                </DetailsActionButton> */}
               </DetailsActions>
             </VideoDetailsActions>
             <VideoDescription>

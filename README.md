@@ -12,7 +12,7 @@
 
 - **STACK :**
 
-  - **PEXELS STREAM** : `1.8.0`
+  - **PEXELS STREAM** : `1.9.0`
   - **FAKER** : `8.4.1`
   - **REACT** : `18.2.0`
   - **PEXELS** : `1.4.0`
@@ -31,3 +31,4 @@
 
   - **Author : [David Gómez](https://github.com/DavidGomezToca)**
   - **Videos : [PEXELS](https://www.pexels.com)**
+  - **Translations : [MyMemory](https://mymemory.translated.net)**

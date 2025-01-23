@@ -90,7 +90,7 @@ export const SubscribeButton = styled.div`
   font-weight: bold;
 
   &.subscribed {
-    background-color: gold;
+    background-color: grey;
   }
 `;
 
@@ -112,6 +112,10 @@ export const DetailsActionButton = styled.div`
 
   .divider {
     border-left: 1px solid ${({ theme: { grey3 } }) => grey3};
+  }
+
+  &.saved {
+    background-color: grey;
   }
 `;
 

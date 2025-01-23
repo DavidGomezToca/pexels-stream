@@ -52,6 +52,7 @@ export interface ITranslations {
   showMore: string;
   showLess: string;
   save: string;
+  saved: string;
   share: string;
   subscribe: string;
   subscribed: string;
@@ -117,6 +118,7 @@ const english: ITranslations = {
   showMore: "Show more",
   showLess: "Show less",
   save: "Save",
+  saved: "Saved",
   share: "Share",
   subscribe: "Subscribe",
   subscribed: "Subscribed",
@@ -182,6 +184,7 @@ const french: ITranslations = {
   showMore: "Montre plus",
   showLess: "Montrer moins",
   save: "Sauvegarder",
+  saved: "Sauvegardé",
   share: "Partager",
   subscribe: "S'abonner",
   subscribed: "Abonné",
