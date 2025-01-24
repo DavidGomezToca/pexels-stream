@@ -42,7 +42,7 @@ const Menu = () => {
           <div key={name}>
             <LargeMenuSection>
               <MenuItem
-                active={
+                $active={
                   name.toLowerCase() === activeCategory.toLowerCase()
                     ? "true"
                     : "false"

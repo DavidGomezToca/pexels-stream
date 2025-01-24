@@ -44,7 +44,7 @@ export const RegularVideoThumbnail = styled.div<{ $isMenuSmall?: boolean }>`
 export const Time = styled.div`
   background-color: ${({ theme: { background } }) => background};
   width: max-content;
-  padding: 0.15rem 0.25rem;
+  padding: 0.15rem 0.4rem;
   border-radius: 0.3rem;
   position: absolute;
   bottom: 0.3rem;

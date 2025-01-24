@@ -24,12 +24,12 @@ export const LargeMenuSection = styled.div`
   }
 `;
 
-export const MenuItem = styled.div<{ active: string }>`
+export const MenuItem = styled.div<{ $active: string }>`
   display: flex;
   color: ${({ theme: { text } }) => text};
   border-radius: 0.5rem;
-  background-color: ${({ active, theme: { grey2 } }) =>
-    active === "true" ? grey2 : null};
+  background-color: ${({ $active, theme: { grey2 } }) =>
+    $active === "true" ? grey2 : null};
 
   &.small {
     font-size: 26px;
