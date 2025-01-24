@@ -110,7 +110,7 @@ const WatchVideoContents = () => {
       const title = getTitle(videoToWatchData.url!);
       translateText(title, "fr");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoToWatchData?.url, language]);
 
   if (isFetchingVideos || !videoToWatchData) {
@@ -199,9 +199,11 @@ const WatchVideoContents = () => {
         </WatchVideosContainer>
         <MoreVideosContainer>
           <Categories />
-          {videos.map((video) => (
-            <RegularVideoItem key={video.id} smallView={true} video={video} />
-          ))}
+          {videos
+            .filter((video) => video.id !== videoToWatchData?.id)
+            .map((video) => (
+              <RegularVideoItem key={video.id} smallView={true} video={video} />
+            ))}
         </MoreVideosContainer>
       </StyledWatchVideoContents>
     </div>
