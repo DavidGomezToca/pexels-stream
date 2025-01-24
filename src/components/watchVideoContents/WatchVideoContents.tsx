@@ -14,21 +14,22 @@ import {
   WatchVideosContainer,
   ShareButton,
 } from "./WatchVideoContents.styles";
-import Categories from "../categories/Categories";
-import { useAppContext } from "../../context/App.context";
-import RegularVideoItem from "../regularVideoItem/RegularVideoItem";
+import ReactPlayer from "react-player";
+import { faker } from "@faker-js/faker";
 import { useParams } from "react-router-dom";
 import { getTitle } from "../../utils/videos";
-import { LoadingBackdrop } from "../content/Content.styles";
-import ReactPlayer from "react-player";
 import { Text } from "../../utils/Text.styles";
-import { faker } from "@faker-js/faker";
+import { EmailShareButton } from "react-share";
+import { PiListPlusFill } from "react-icons/pi";
+import Categories from "../categories/Categories";
+import { IoArrowRedoOutline } from "react-icons/io5";
+import { translateText } from "../../utils/translate";
+import { useAppContext } from "../../context/App.context";
+import { TiThumbsDown, TiThumbsUp } from "react-icons/ti";
+import { LoadingBackdrop } from "../content/Content.styles";
+import RegularVideoItem from "../regularVideoItem/RegularVideoItem";
 import { RegularVideoPic } from "../regularVideoItem/RegularVideoItem.styles";
 // import { HiDotsHorizontal } from "react-icons/hi";
-import { PiListPlusFill } from "react-icons/pi";
-import { IoArrowRedoOutline } from "react-icons/io5";
-import { TiThumbsDown, TiThumbsUp } from "react-icons/ti";
-import { EmailShareButton } from "react-share";
 
 const WatchVideoContents = () => {
   const {
@@ -44,8 +45,7 @@ const WatchVideoContents = () => {
   const [dislike, setDislike] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
   const [saved, setSaved] = useState(false);
-  const [translatedTitle, setTranslatedTitle] = useState("Video Title");
-  // const [language, setLanguage] = useState("fr"); // Default language is French
+  const [title, setTitle] = useState("Video Title");
 
   const handleLike = () => {
     setLike((prevLike) => !prevLike);
@@ -69,28 +69,28 @@ const WatchVideoContents = () => {
     setSaved((prevSaved) => !prevSaved);
   };
 
-  const translateText = async (
-    text: string,
-    targetLang: string
-  ): Promise<void> => {
-    if (language === "english") {
-      setTranslatedTitle(getTitle(videoToWatchData?.url!));
-      return;
-    }
-    try {
-      const response = await fetch(
-        `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
-          text
-        )}&langpair=en|${targetLang}`
-      );
-      const data = await response.json();
-      if (data?.responseData?.translatedText) {
-        setTranslatedTitle(data.responseData.translatedText);
-      }
-    } catch (error) {
-      console.error("Error fetching translation:", error);
-    }
-  };
+  // const translateText = async (
+  //   text: string,
+  //   targetLang: string
+  // ): Promise<void> => {
+  //   if (language === "en") {
+  //     setTranslatedTitle(getTitle(videoToWatchData?.url!));
+  //     return;
+  //   }
+  //   try {
+  //     const response = await fetch(
+  //       `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
+  //         text
+  //       )}&langpair=en|${targetLang}`
+  //     );
+  //     const data = await response.json();
+  //     if (data?.responseData?.translatedText) {
+  //       setTranslatedTitle(data.responseData.translatedText);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching translation:", error);
+  //   }
+  // };
 
   document.title = getTitle(videoToWatchData?.url!);
 
@@ -107,8 +107,15 @@ const WatchVideoContents = () => {
 
   useEffect(() => {
     if (videoToWatchData?.url) {
-      const title = getTitle(videoToWatchData.url!);
-      translateText(title, "fr");
+      const fetchTranslation = async () => {
+        const translated = await translateText(
+          getTitle(videoToWatchData.url!),
+          language
+        );
+        setTitle(translated || getTitle(videoToWatchData.url!)); // Fallback to original title if translation fails
+      };
+
+      fetchTranslation();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoToWatchData?.url, language]);
@@ -134,7 +141,7 @@ const WatchVideoContents = () => {
             />
           </VideoScreen>
           <VideoDetails>
-            <Text className="videoScreenTitle">{translatedTitle}</Text>
+            <Text className="videoScreenTitle">{title}</Text>
             <VideoDetailsActions>
               <VideoDetailsInfo>
                 <RegularVideoPic>

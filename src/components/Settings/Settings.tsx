@@ -12,7 +12,7 @@ const Settings = ({ setShowSettings }: any) => {
     {
       label: text.language,
       icon: <HiLanguage size={23} />,
-      value: text[language === "english" ? "french" : "english"],
+      value: text[language === "en" ? "french" : "english"],
       onClick: () => {
         toggleLanguage();
         setShowSettings((currentState: boolean) => !currentState);

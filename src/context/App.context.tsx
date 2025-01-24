@@ -16,7 +16,7 @@ import { changeTheme } from "../store/app.slice";
 
 interface IAppContextValue {
   theme: "light" | "dark";
-  language: "english" | "french";
+  language: "en" | "fr";
   toggleTheme: () => void;
   toggleLanguage: () => void;
   text: ITranslations;
@@ -52,7 +52,7 @@ interface IAppContextProviderProps {
 const client = createClient(PEXELES_API_KEY);
 
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
-  const [language, setLanguage] = useState<"english" | "french">("english");
+  const [language, setLanguage] = useState<"en" | "fr">("en");
   const [searchBarText, setSearchBarText] = useState("");
   const [isMenuSmall, setIsMenuSmall] = useState(window.innerWidth <= 1200);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -106,7 +106,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     dispatch(changeTheme());
   };
   const toggleLanguage = () => {
-    setLanguage((language) => (language === "english" ? "french" : "english"));
+    setLanguage((language) => (language === "en" ? "fr" : "en"));
   };
   const toggleMenuSize = () => {
     setIsMenuSmall((state) => !state);

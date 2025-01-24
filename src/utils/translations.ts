@@ -64,7 +64,7 @@ export interface ITranslations {
   subscribers: string;
 }
 
-const english: ITranslations = {
+const en: ITranslations = {
   signIn: "Sign in",
   settings: "Settings",
   appearance: "Appearance",
@@ -130,7 +130,7 @@ const english: ITranslations = {
   subscribers: "Subscribers",
 };
 
-const french: ITranslations = {
+const fr: ITranslations = {
   signIn: "Se connecter",
   settings: "Paramètres",
   appearance: "Apparence",
@@ -197,6 +197,6 @@ const french: ITranslations = {
 };
 
 export const LANGUAGE = {
-  english,
-  french,
+  en,
+  fr,
 };

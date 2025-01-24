@@ -63,6 +63,7 @@ const Header = () => {
       <SearchSection>
         <SearchBar>
           <input
+            id="search-bar-input"
             value={searchText}
             placeholder={text.search}
             onChange={(e) => setSearchText(e.target.value)}

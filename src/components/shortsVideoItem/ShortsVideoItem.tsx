@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppContext } from "../../context/App.context";
 import {
   StyledShortsVideoItem,
   StyledShortsVideoThumbnail,
 } from "./ShortsVideoItem.styles";
-import ReactPlayer from "react-player";
 import { Video } from "pexels";
-import { Text } from "../../utils/Text.styles";
+import ReactPlayer from "react-player";
 import { getTitle } from "../../utils/videos";
+import { Text } from "../../utils/Text.styles";
+import { translateText } from "../../utils/translate";
 
 interface IShortsVideoItemProps {
   video: Video;
@@ -15,8 +16,21 @@ interface IShortsVideoItemProps {
 
 const ShortsVideoItem = ({ video }: IShortsVideoItemProps) => {
   const [playTrailer, setPlayTrailer] = useState(false);
-  const { isMenuSmall, setVideoToWatch } = useAppContext();
+  const { isMenuSmall, setVideoToWatch, language } = useAppContext();
   const TITLE_LENGTH = 50;
+  const [title, setTitle] = useState("Video Title");
+
+  useEffect(() => {
+    if (video?.url) {
+      const fetchTranslation = async () => {
+        const translated = await translateText(getTitle(video.url!), language);
+        setTitle(translated || getTitle(video.url!)); // Fallback to original title if translation fails
+      };
+
+      fetchTranslation();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [video?.url, language]);
 
   return (
     <StyledShortsVideoItem
@@ -41,8 +55,8 @@ const ShortsVideoItem = ({ video }: IShortsVideoItemProps) => {
         )}
       </StyledShortsVideoThumbnail>
       <Text className="videoItemTitle">
-        {getTitle(video.url).slice(0, TITLE_LENGTH)}
-        {getTitle(video.url).length > TITLE_LENGTH && "..."}
+        {title.slice(0, TITLE_LENGTH)}
+        {title.length > TITLE_LENGTH && "..."}
       </Text>
       <Text className="details">{video.duration}M views</Text>
     </StyledShortsVideoItem>

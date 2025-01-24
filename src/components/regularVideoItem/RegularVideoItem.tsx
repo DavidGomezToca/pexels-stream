@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   RegularVideoContent,
   RegularVideoPic,
@@ -9,10 +9,11 @@ import {
 } from "./RegularVideoItem.styles";
 import { Video } from "pexels";
 import ReactPlayer from "react-player";
-import { useAppContext } from "../../context/App.context";
-import { Text } from "../../utils/Text.styles";
 import { getTitle } from "../../utils/videos";
+import { Text } from "../../utils/Text.styles";
+import { translateText } from "../../utils/translate";
 import { ITranslations } from "../../utils/translations";
+import { useAppContext } from "../../context/App.context";
 
 interface IRegularVideoItemProps {
   video: Video;
@@ -21,11 +22,24 @@ interface IRegularVideoItemProps {
 
 const RegularVideoItem = ({ video, smallView }: IRegularVideoItemProps) => {
   const [playTrailer, setPlayTrailer] = useState(false);
-  const { isMenuSmall, setVideoToWatch } = useAppContext();
+  const { isMenuSmall, setVideoToWatch, language } = useAppContext();
   const TITLE_LENGTH = 50;
   const views = Math.floor(video.duration * 1.2 + 2);
   const dateUpload = Math.floor(video.duration / 0.8 + 5);
   const { text } = useAppContext();
+  const [title, setTitle] = useState("Video Title");
+
+  useEffect(() => {
+    if (video?.url) {
+      const fetchTranslation = async () => {
+        const translated = await translateText(getTitle(video.url!), language);
+        setTitle(translated || getTitle(video.url!)); // Fallback to original title if translation fails
+      };
+
+      fetchTranslation();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [video?.url, language]);
 
   return (
     <StyledRegularVideoItem
@@ -64,8 +78,8 @@ const RegularVideoItem = ({ video, smallView }: IRegularVideoItemProps) => {
         </RegularVideoPic>
         <RegularVideoTitleSubTitle className={`${smallView && "smallView"}`}>
           <Text className="videoItemTitle">
-            {getTitle(video.url).slice(0, TITLE_LENGTH)}
-            {getTitle(video.url).length > TITLE_LENGTH && "..."}
+            {title.slice(0, TITLE_LENGTH)}
+            {title.length > TITLE_LENGTH && "..."}
           </Text>
           <Text className="name">{video.user.name}</Text>
           <Text className="details">
