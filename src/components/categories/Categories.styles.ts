@@ -10,9 +10,9 @@ export const StyledCategories = styled.div`
   z-index: 100;
 `;
 
-export const CategoryItem = styled.div<{ active: string }>`
-  background-color: ${({ theme: { divider, text }, active }) =>
-    active === "true" ? text : divider};
+export const CategoryItem = styled.div<{ $active: string }>`
+  background-color: ${({ theme: { divider, text }, $active }) =>
+    $active === "true" ? text : divider};
   padding: 0.5rem 0.8rem;
   border-radius: 0.5rem;
   white-space: nowrap;
@@ -22,11 +22,11 @@ export const CategoryItem = styled.div<{ active: string }>`
   align-items: center;
 
   p {
-    color: ${({ theme: { background, text }, active }) =>
-      active === "true" ? background : text} !important};
+    color: ${({ theme: { background, text }, $active }) =>
+      $active === "true" ? background : text} !important};
   }
 
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 `;

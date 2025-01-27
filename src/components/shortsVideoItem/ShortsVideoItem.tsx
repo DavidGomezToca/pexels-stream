@@ -8,6 +8,7 @@ import { Video } from "pexels";
 import ReactPlayer from "react-player";
 import { getTitle } from "../../utils/videos";
 import { Text } from "../../utils/Text.styles";
+import { ITranslations } from "../../utils/translations";
 import { translateText } from "../../utils/translate";
 
 interface IShortsVideoItemProps {
@@ -16,8 +17,9 @@ interface IShortsVideoItemProps {
 
 const ShortsVideoItem = ({ video }: IShortsVideoItemProps) => {
   const [playTrailer, setPlayTrailer] = useState(false);
-  const { isMenuSmall, setVideoToWatch, language } = useAppContext();
+  const { isMenuSmall, setVideoToWatch, text, language } = useAppContext();
   const TITLE_LENGTH = 50;
+  const views = Math.floor(video.duration * 1.2 + 2);
   const [title, setTitle] = useState("Video Title");
 
   useEffect(() => {
@@ -58,7 +60,9 @@ const ShortsVideoItem = ({ video }: IShortsVideoItemProps) => {
         {title.slice(0, TITLE_LENGTH)}
         {title.length > TITLE_LENGTH && "..."}
       </Text>
-      <Text className="details">{video.duration}M views</Text>
+      <Text className="details">
+        {views} M {text["views" as keyof ITranslations]}
+      </Text>
     </StyledShortsVideoItem>
   );
 };

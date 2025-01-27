@@ -17,7 +17,7 @@ const Categories = () => {
         {CATEGORIES.map((name, index) => (
           <CategoryItem
             key={index}
-            active={
+            $active={
               name.toLowerCase() === activeCategory.toLowerCase()
                 ? "true"
                 : "false"
