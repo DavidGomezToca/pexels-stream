@@ -35,6 +35,10 @@ export const LogoSection = styled(Link)`
   align-items: center;
   gap: 0.2rem;
   text-decoration: none;
+
+  &.small {
+    scale: 0.8;
+  }
 `;
 
 export const SearchBar = styled.div`
@@ -51,5 +55,9 @@ export const SearchBar = styled.div`
     color: ${({ theme: { text } }) => text};
     font-size: inherit;
     padding-left: 1rem;
+  }
+
+  input.small {
+    padding: 0;
   }
 `;

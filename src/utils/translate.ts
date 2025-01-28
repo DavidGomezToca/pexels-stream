@@ -16,16 +16,16 @@ export const translateText = async (
         )
       ) {
         console.warn("Translation limit reached:", data.responseDetails);
-        return text; // Return the original text if the limit is reached
+        return text;
       }
       if (data?.responseData?.translatedText) {
         return data.responseData.translatedText;
       }
       console.error("Translation response does not contain translated text.");
-      return null;
+      return text;
     } catch (error) {
       console.error("Error fetching translation:", error);
-      return null;
+      return text;
     }
   } else {
     return text;

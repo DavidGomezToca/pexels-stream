@@ -8,6 +8,10 @@ export const StyledWatchVideoContents = styled.div`
   grid-template-columns: 71.5vw 24vw;
   padding: 0 1.5rem;
   overflow: scroll;
+
+  &.small {
+    grid-template-columns: 100%;
+  }
 `;
 
 export const MoreVideosContainer = styled.div`
@@ -25,7 +29,6 @@ export const WatchVideosContainer = styled.div`
 
 export const VideoScreen = styled.div`
   width: 100%;
-  height: 44rem;
   border-radius: 1rem;
   overflow: hidden;
 `;
@@ -56,6 +59,10 @@ export const VideoDetailsActions = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 1rem;
+
+  &.small {
+    display: block;
+  }
 `;
 
 export const VideoDetailsInfo = styled.div`
@@ -98,6 +105,10 @@ export const DetailsActions = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
+  &.small {
+    margin-top: 20px;
+  }
 `;
 
 export const DetailsActionButton = styled.div`

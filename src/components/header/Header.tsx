@@ -55,7 +55,7 @@ const Header = () => {
             <SlMenu size={17} />
           </Icon>
         )}
-        <LogoSection to="/">
+        <LogoSection className={window.innerWidth <= 400 ? "small" : ""} to="/">
           <FaYoutube color="#FF0000" size={30} />
           <Text className="logo">PexelsStream</Text>
         </LogoSection>
@@ -63,6 +63,7 @@ const Header = () => {
       <SearchSection>
         <SearchBar>
           <input
+            className={window.innerWidth <= 400 ? "small" : ""}
             id="search-bar-input"
             value={searchText}
             placeholder={text.search}

@@ -126,7 +126,9 @@ const WatchVideoContents = () => {
 
   return (
     <div>
-      <StyledWatchVideoContents>
+      <StyledWatchVideoContents
+        className={window.innerWidth <= 1100 ? "small" : ""}
+      >
         <WatchVideosContainer>
           <VideoScreen>
             <ReactPlayer
@@ -142,7 +144,9 @@ const WatchVideoContents = () => {
           </VideoScreen>
           <VideoDetails>
             <Text className="videoScreenTitle">{title}</Text>
-            <VideoDetailsActions>
+            <VideoDetailsActions
+              className={window.innerWidth <= 600 ? "small" : ""}
+            >
               <VideoDetailsInfo>
                 <RegularVideoPic>
                   <img src={videoToWatchData?.image} alt="profile pic" />
@@ -160,7 +164,9 @@ const WatchVideoContents = () => {
                   {subscribed ? text.subscribed : text.subscribe}
                 </SubscribeButton>
               </VideoDetailsInfo>
-              <DetailsActions>
+              <DetailsActions
+                className={window.innerWidth <= 600 ? "small" : ""}
+              >
                 <DetailsActionButton>
                   <>
                     <TiThumbsUp
@@ -204,14 +210,18 @@ const WatchVideoContents = () => {
             </VideoDescription>
           </VideoDetails>
         </WatchVideosContainer>
-        <MoreVideosContainer>
-          <Categories />
-          {videos
-            .filter((video) => video.id !== videoToWatchData?.id)
-            .map((video) => (
-              <RegularVideoItem key={video.id} smallView={true} video={video} />
-            ))}
-        </MoreVideosContainer>
+          <MoreVideosContainer>
+            <Categories />
+            {videos
+              .filter((video) => video.id !== videoToWatchData?.id)
+              .map((video) => (
+                <RegularVideoItem
+                  key={video.id}
+                  smallView={true}
+                  video={video}
+                />
+              ))}
+          </MoreVideosContainer>
       </StyledWatchVideoContents>
     </div>
   );
