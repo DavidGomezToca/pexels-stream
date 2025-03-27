@@ -6,13 +6,12 @@ import { Text } from "../../utils/Text.styles";
 import { useAppContext } from "../../context/App.context";
 
 const Settings = ({ setShowSettings }: any) => {
-  const { text, theme, language, toggleTheme, toggleLanguage } =
-    useAppContext();
+  const { text, theme, toggleTheme, toggleLanguage } = useAppContext();
   const SETTINGS = [
     {
       label: text.language,
       icon: <HiLanguage size={23} />,
-      value: text[language === "en" ? "french" : "english"],
+      value: text["nextLanguage"],
       onClick: () => {
         toggleLanguage();
         setShowSettings((currentState: boolean) => !currentState);

@@ -16,7 +16,7 @@ import { changeTheme } from "../store/app.slice";
 
 interface IAppContextValue {
   theme: "light" | "dark";
-  language: "en" | "fr";
+  language: string;
   toggleTheme: () => void;
   toggleLanguage: () => void;
   text: ITranslations;
@@ -52,7 +52,9 @@ interface IAppContextProviderProps {
 const client = createClient(PEXELES_API_KEY);
 
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
-  const [language, setLanguage] = useState<"en" | "fr">("en");
+  const languages = ["es", "fr", "en", "pt"];
+  const [languageIndex, setLanguageIndex] = useState(2);
+  const language = languages[languageIndex];
   const [searchBarText, setSearchBarText] = useState("");
   const [isMenuSmall, setIsMenuSmall] = useState(window.innerWidth <= 1200);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -106,7 +108,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     dispatch(changeTheme());
   };
   const toggleLanguage = () => {
-    setLanguage((language) => (language === "en" ? "fr" : "en"));
+    setLanguageIndex((prevIndex) => (prevIndex + 1) % languages.length);
   };
   const toggleMenuSize = () => {
     setIsMenuSmall((state) => !state);
@@ -117,12 +119,12 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     language,
     toggleTheme,
     toggleLanguage,
-    text: LANGUAGE[language],
+    text: LANGUAGE[language as keyof typeof LANGUAGE],
     searchBarText,
     setSearchBarText,
     isMenuSmall,
     toggleMenuSize,
-    activeMenuText: LANGUAGE[language][activeMenuText as keyof ITranslations],
+    activeMenuText: LANGUAGE[language as keyof typeof LANGUAGE][activeMenuText as keyof ITranslations],
     activeCategory,
     setActiveCategory,
     videos,
