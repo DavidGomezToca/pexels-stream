@@ -5,7 +5,10 @@ export interface ITranslations {
   dark: string;
   light: string;
   language: string;
-  nextLanguage: string;
+  es: string;
+  fr: string;
+  en: string;
+  pt: string;
   search: string;
   voiceSearch: string;
   history: string;
@@ -69,7 +72,10 @@ const es: ITranslations = {
   dark: "Oscuro",
   light: "Claro",
   language: "Idioma",
-  nextLanguage: "French",
+  es: "Español",
+  fr: "Français",
+  en: "English",
+  pt: "Português",
   search: "Buscar en Pexels",
   voiceSearch: "Buscar con tu voz",
   history: "Historial",
@@ -134,7 +140,10 @@ const fr: ITranslations = {
   dark: "Sombre",
   light: "Clair",
   language: "Langue",
-  nextLanguage: "English",
+  es: "Español",
+  fr: "Français",
+  en: "English",
+  pt: "Português",
   search: "Recherche dans Pexels",
   voiceSearch: "Recherche avec ta voix",
   history: "Histoire",
@@ -199,7 +208,10 @@ const en: ITranslations = {
   dark: "Dark",
   light: "Light",
   language: "Language",
-  nextLanguage: "Português",
+  es: "Español",
+  fr: "Français",
+  en: "English",
+  pt: "Português",
   search: "Search in Pexels",
   voiceSearch: "Search with your voice",
   history: "History",
@@ -264,7 +276,10 @@ const pt: ITranslations = {
   dark: "Escuro",
   light: "Claro",
   language: "Idioma",
-  nextLanguage: "Español",
+  es: "Español",
+  fr: "Français",
+  en: "English",
+  pt: "Português",
   search: "Pesquisar no Pexels",
   voiceSearch: "Pesquisar com sua voz",
   history: "Histórico",

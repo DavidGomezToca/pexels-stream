@@ -13,12 +13,14 @@ import { PEXELES_API_KEY } from "../utils/pexels";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { changeTheme } from "../store/app.slice";
+import languageData from "../data/languages.json";
 
 interface IAppContextValue {
   theme: "light" | "dark";
-  language: string;
   toggleTheme: () => void;
-  toggleLanguage: () => void;
+  language: string;
+  languages: string[];
+  switchLanguage: (language: string) => void;
   text: ITranslations;
   searchBarText: string;
   setSearchBarText: Dispatch<SetStateAction<string>>;
@@ -52,7 +54,7 @@ interface IAppContextProviderProps {
 const client = createClient(PEXELES_API_KEY);
 
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
-  const languages = ["es", "fr", "en", "pt"];
+  const languages = languageData;
   const [languageIndex, setLanguageIndex] = useState(2);
   const language = languages[languageIndex];
   const [searchBarText, setSearchBarText] = useState("");
@@ -107,8 +109,9 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const toggleTheme = () => {
     dispatch(changeTheme());
   };
-  const toggleLanguage = () => {
-    setLanguageIndex((prevIndex) => (prevIndex + 1) % languages.length);
+  const switchLanguage = (language: string) => {
+    const newIndex = languages.indexOf(language);
+    setLanguageIndex(newIndex);
   };
   const toggleMenuSize = () => {
     setIsMenuSmall((state) => !state);
@@ -116,15 +119,19 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
 
   const value = {
     theme: useAppSelector((state) => state.app.theme),
-    language,
     toggleTheme,
-    toggleLanguage,
+    language,
+    languages,
+    switchLanguage,
     text: LANGUAGE[language as keyof typeof LANGUAGE],
     searchBarText,
     setSearchBarText,
     isMenuSmall,
     toggleMenuSize,
-    activeMenuText: LANGUAGE[language as keyof typeof LANGUAGE][activeMenuText as keyof ITranslations],
+    activeMenuText:
+      LANGUAGE[language as keyof typeof LANGUAGE][
+        activeMenuText as keyof ITranslations
+      ],
     activeCategory,
     setActiveCategory,
     videos,

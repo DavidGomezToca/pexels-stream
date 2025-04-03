@@ -1,20 +1,24 @@
-import React from "react";
-import { Setting, StyledSettings } from "./Settings.styles";
+import { Setting, Language, StyledSettings } from "./Settings.styles";
 import { HiLanguage } from "react-icons/hi2";
 import { GoMoon } from "react-icons/go";
 import { Text } from "../../utils/Text.styles";
 import { useAppContext } from "../../context/App.context";
+import { useState } from "react";
+import { ITranslations } from "../../utils/translations";
 
 const Settings = ({ setShowSettings }: any) => {
-  const { text, theme, toggleTheme, toggleLanguage } = useAppContext();
-  const SETTINGS = [
+  const [showMainSettings, setShowMainSettings] = useState(true);
+  const [showLanguages, setShowLanguages] = useState(false);
+  const { text, theme, language, languages, switchLanguage, toggleTheme } =
+    useAppContext();
+  const settings = [
     {
       label: text.language,
       icon: <HiLanguage size={23} />,
-      value: text["nextLanguage"],
+      value: text[language as keyof ITranslations],
       onClick: () => {
-        toggleLanguage();
-        setShowSettings((currentState: boolean) => !currentState);
+        setShowMainSettings((currentState: boolean) => !currentState);
+        setShowLanguages((currentState: boolean) => !currentState);
       },
     },
     {
@@ -30,12 +34,25 @@ const Settings = ({ setShowSettings }: any) => {
 
   return (
     <StyledSettings>
-      {SETTINGS.map(({ label, icon, value, onClick }, index) => (
-        <Setting key={index} onClick={onClick}>
-          {icon}
-          <Text>{`${label}: ${value}`}</Text>
-        </Setting>
-      ))}
+      {showMainSettings &&
+        settings.map(({ label, icon, value, onClick }, index) => (
+          <Setting key={index} onClick={onClick}>
+            {icon}
+            <Text>{`${label}: ${value}`}</Text>
+          </Setting>
+        ))}
+      {showLanguages &&
+        languages.map((language, index) => (
+          <Language
+            key={index}
+            onClick={() => {
+              switchLanguage(language);
+              setShowSettings((currentState: boolean) => !currentState);
+            }}
+          >
+            <Text>{text[language as keyof ITranslations]}</Text>
+          </Language>
+        ))}
     </StyledSettings>
   );
 };

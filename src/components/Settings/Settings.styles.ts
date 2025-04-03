@@ -28,3 +28,18 @@ export const Setting = styled.div`
     cursor: pointer;
   }
 `;
+
+export const Language = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 3rem;
+  padding-left: 1rem;
+  color: ${({ theme: { text } }) => text};
+
+  &:hover {
+    background-color: ${({ theme: { grey2 } }) => grey2};
+    cursor: pointer;
+  }
+`;
