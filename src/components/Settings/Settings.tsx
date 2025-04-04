@@ -1,5 +1,6 @@
 import { Setting, Language, StyledSettings } from "./Settings.styles";
 import { HiLanguage } from "react-icons/hi2";
+import { TbWorld } from "react-icons/tb";
 import { GoMoon } from "react-icons/go";
 import { Text } from "../../utils/Text.styles";
 import { useAppContext } from "../../context/App.context";
@@ -14,7 +15,7 @@ const Settings = ({ setShowSettings }: any) => {
   const settings = [
     {
       label: text.language,
-      icon: <HiLanguage size={23} />,
+      icon: <TbWorld size={23} />,
       value: text[language as keyof ITranslations],
       onClick: () => {
         setShowMainSettings((currentState: boolean) => !currentState);
@@ -50,6 +51,7 @@ const Settings = ({ setShowSettings }: any) => {
               setShowSettings((currentState: boolean) => !currentState);
             }}
           >
+            <HiLanguage size={23} />
             <Text>{text[language as keyof ITranslations]}</Text>
           </Language>
         ))}

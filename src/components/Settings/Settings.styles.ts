@@ -7,7 +7,7 @@ export const StyledSettings = styled.div`
   position: absolute;
   top: 100%;
   right: 85%;
-  width: 17.3vw;
+  width: 12.0vw;
   padding: 0.5rem 0;
   border-radius: 0.5rem;
   box-shadow: 0px 10px 43px -3px ${({ theme: { settingsShadow } }) => settingsShadow};

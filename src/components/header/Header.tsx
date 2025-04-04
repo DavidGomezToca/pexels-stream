@@ -12,7 +12,7 @@ import { Icon } from "../../utils/Icon.styles";
 import { SlMenu } from "react-icons/sl";
 import { FaMicrophone, FaYoutube } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
-import { CgMoreVerticalAlt } from "react-icons/cg";
+import { MdOutlineSettings } from "react-icons/md";
 import Settings from "../Settings/Settings";
 import { useAppContext } from "../../context/App.context";
 import SpeechRecognition, {
@@ -91,11 +91,9 @@ const Header = () => {
       </SearchSection>
       <HeaderMoreSection>
         <Icon
-          data-tooltip-id="settings"
-          data-tooltip-content={text.settings}
           onClick={() => setShowSettings((currentState) => !currentState)}
         >
-          <CgMoreVerticalAlt size={21} />
+          <MdOutlineSettings size={24} />
         </Icon>
         {showSettings && <Settings setShowSettings={setShowSettings} />}
       </HeaderMoreSection>
