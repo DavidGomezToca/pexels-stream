@@ -29,7 +29,6 @@ import { TiThumbsDown, TiThumbsUp } from "react-icons/ti";
 import { LoadingBackdrop } from "../content/Content.styles";
 import RegularVideoItem from "../regularVideoItem/RegularVideoItem";
 import { RegularVideoPic } from "../regularVideoItem/RegularVideoItem.styles";
-// import { HiDotsHorizontal } from "react-icons/hi";
 
 const WatchVideoContents = () => {
   const {
@@ -46,6 +45,7 @@ const WatchVideoContents = () => {
   const [subscribed, setSubscribed] = useState(false);
   const [saved, setSaved] = useState(false);
   const [title, setTitle] = useState("Video Title");
+  const [showMore, setShowMore] = useState(false);
 
   const handleLike = () => {
     setLike((prevLike) => !prevLike);
@@ -69,28 +69,9 @@ const WatchVideoContents = () => {
     setSaved((prevSaved) => !prevSaved);
   };
 
-  // const translateText = async (
-  //   text: string,
-  //   targetLang: string
-  // ): Promise<void> => {
-  //   if (language === "en") {
-  //     setTranslatedTitle(getTitle(videoToWatchData?.url!));
-  //     return;
-  //   }
-  //   try {
-  //     const response = await fetch(
-  //       `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
-  //         text
-  //       )}&langpair=en|${targetLang}`
-  //     );
-  //     const data = await response.json();
-  //     if (data?.responseData?.translatedText) {
-  //       setTranslatedTitle(data.responseData.translatedText);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching translation:", error);
-  //   }
-  // };
+  const toggleShowMore = () => {
+    setShowMore((prevShowMore) => !prevShowMore);
+  };
 
   document.title = getTitle(videoToWatchData?.url!);
 
@@ -112,7 +93,7 @@ const WatchVideoContents = () => {
           getTitle(videoToWatchData.url!),
           language
         );
-        setTitle(translated || getTitle(videoToWatchData.url!)); // Fallback to original title if translation fails
+        setTitle(translated || getTitle(videoToWatchData.url!));
       };
 
       fetchTranslation();
@@ -200,28 +181,30 @@ const WatchVideoContents = () => {
                   <PiListPlusFill size={21} />
                   <Text>{saved ? text.saved : text.save}</Text>
                 </DetailsActionButton>
-                {/* <DetailsActionButton>
-                  <HiDotsHorizontal size={21} />
-                </DetailsActionButton> */}
               </DetailsActions>
             </VideoDetailsActions>
             <VideoDescription>
-              <Text>{faker.lorem.paragraphs(5)}</Text>
+              {showMore ? (
+                <Text>
+                  {faker.lorem.paragraphs(window.innerWidth <= 600 ? 2 : 4)}
+                </Text>
+              ) : (
+                <Text>{faker.lorem.paragraphs(window.innerWidth <= 600 ? 1 : 2)}...</Text>
+              )}
+              <Text className="showMore" onClick={() => toggleShowMore()}>
+                Show {showMore ? "Less" : "More"}
+              </Text>
             </VideoDescription>
           </VideoDetails>
         </WatchVideosContainer>
-          <MoreVideosContainer>
-            <Categories />
-            {videos
-              .filter((video) => video.id !== videoToWatchData?.id)
-              .map((video) => (
-                <RegularVideoItem
-                  key={video.id}
-                  smallView={true}
-                  video={video}
-                />
-              ))}
-          </MoreVideosContainer>
+        <MoreVideosContainer>
+          <Categories />
+          {videos
+            .filter((video) => video.id !== videoToWatchData?.id)
+            .map((video) => (
+              <RegularVideoItem key={video.id} smallView={true} video={video} />
+            ))}
+        </MoreVideosContainer>
       </StyledWatchVideoContents>
     </div>
   );

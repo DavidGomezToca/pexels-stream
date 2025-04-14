@@ -17,4 +17,9 @@ export const Text = styled.p`
     font-size: 16px;
     font-style: italic;
   }
+  &.showMore {
+    margin-top: 14px;
+    font-size: 16px;
+    font-weight: bold;
+  }
 `;
