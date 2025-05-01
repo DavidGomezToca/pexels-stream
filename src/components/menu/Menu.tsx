@@ -28,7 +28,7 @@ const Menu = () => {
                 key={name}
                 onClick={() => setActiveCategory(name)}
               >
-                <Text className="category">
+                <Text className="text_category">
                   {text[name as keyof ITranslations]}
                 </Text>
               </MenuItem>

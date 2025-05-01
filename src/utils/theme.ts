@@ -1,7 +1,6 @@
 interface ITHEME {
   text: string;
   background: string;
-  settingsBg: string;
   settingsShadow: string;
   divider: string;
   backdrop: string;
@@ -17,7 +16,6 @@ interface ITHEME {
 export const darkTheme: ITHEME = {
   text: "#FFF",
   background: "#0F0F0F",
-  settingsBg: "#282828",
   settingsShadow: "#0E0E0E",
   divider: "#272727",
   backdrop: "#000",
@@ -33,7 +31,6 @@ export const darkTheme: ITHEME = {
 export const lightTheme: ITHEME = {
   text: "#000",
   background: "#FFF",
-  settingsBg: "#FFF",
   settingsShadow: "#E1E1E1",
   divider: "#CCC",
   backdrop: "#000",

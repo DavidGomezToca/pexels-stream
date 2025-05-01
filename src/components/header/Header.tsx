@@ -12,16 +12,17 @@ import { Icon } from "../../utils/Icon.styles";
 import { SlMenu } from "react-icons/sl";
 import { FaMicrophone, FaYoutube } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
-import { MdOutlineSettings } from "react-icons/md";
+// import { MdOutlineSettings } from "react-icons/md";
 import Settings from "../Settings/Settings";
 import { useAppContext } from "../../context/App.context";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import { useLocation } from "react-router-dom";
+// import { Setting } from "../Settings/Settings.styles";
 
 const Header = () => {
-  const [showSettings, setShowSettings] = useState(false);
+  // const [showSettings, setShowSettings] = useState(true);
   const [searchText, setSearchText] = useState("");
   const { text, setSearchBarText, toggleMenuSize } = useAppContext();
   const { transcript, listening, browserSupportsSpeechRecognition } =
@@ -90,12 +91,13 @@ const Header = () => {
         </Icon>
       </SearchSection>
       <HeaderMoreSection>
-        <Icon
+        {/* <Icon
           onClick={() => setShowSettings((currentState) => !currentState)}
         >
           <MdOutlineSettings size={24} />
-        </Icon>
-        {showSettings && <Settings setShowSettings={setShowSettings} />}
+        </Icon> */}
+        {/* {showSettings && <Settings setShowSettings={setShowSettings} />} */}
+        <Settings />
       </HeaderMoreSection>
     </StyledHeader>
   );
