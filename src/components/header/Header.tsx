@@ -12,17 +12,14 @@ import { Icon } from "../../utils/Icon.styles";
 import { SlMenu } from "react-icons/sl";
 import { FaMicrophone, FaYoutube } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
-// import { MdOutlineSettings } from "react-icons/md";
 import Settings from "../Settings/Settings";
 import { useAppContext } from "../../context/App.context";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import { useLocation } from "react-router-dom";
-// import { Setting } from "../Settings/Settings.styles";
 
 const Header = () => {
-  // const [showSettings, setShowSettings] = useState(true);
   const [searchText, setSearchText] = useState("");
   const { text, setSearchBarText, toggleMenuSize } = useAppContext();
   const { transcript, listening, browserSupportsSpeechRecognition } =
@@ -56,21 +53,23 @@ const Header = () => {
             <SlMenu size={17} />
           </Icon>
         )}
-        <LogoSection className={window.innerWidth <= 400 ? "small" : ""} to="/">
-          <FaYoutube color="#FF0000" size={30} />
-          <Text className="logo">PexelsStream</Text>
-        </LogoSection>
+        {window.innerWidth >= 450 && (
+          <LogoSection to="/">
+            <FaYoutube color="#FF0000" size={30} />
+            <Text className="logo">PexelsStream</Text>
+          </LogoSection>
+        )}
       </LeftSection>
       <SearchSection>
-        <SearchBar>
+        <SearchBar className={window.innerWidth <= 400 ? "amplified" : ""}>
           <input
-            className={window.innerWidth <= 400 ? "small" : ""}
             id="search-bar-input"
             value={searchText}
             placeholder={text.search}
             onChange={(e) => setSearchText(e.target.value)}
           />
           <Icon
+            className={window.innerWidth <= 400 ? "invisible" : ""}
             data-tooltip-id="search"
             data-tooltip-content={text.search}
             onClick={() => setSearchBarText(searchText)}
@@ -91,12 +90,6 @@ const Header = () => {
         </Icon>
       </SearchSection>
       <HeaderMoreSection>
-        {/* <Icon
-          onClick={() => setShowSettings((currentState) => !currentState)}
-        >
-          <MdOutlineSettings size={24} />
-        </Icon> */}
-        {/* {showSettings && <Settings setShowSettings={setShowSettings} />} */}
         <Settings />
       </HeaderMoreSection>
     </StyledHeader>

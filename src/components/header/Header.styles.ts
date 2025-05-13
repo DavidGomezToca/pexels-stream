@@ -50,14 +50,14 @@ export const SearchBar = styled.div`
   background-color: ${({ theme: { grey2 } }) => grey2};
   overflow: hidden;
 
+  &.amplified {
+    width: 50vw;
+  }
+
   input {
     background-color: ${({ theme: { background } }) => background};
     color: ${({ theme: { text } }) => text};
     font-size: inherit;
     padding-left: 1rem;
-  }
-
-  input.small {
-    padding: 0;
   }
 `;

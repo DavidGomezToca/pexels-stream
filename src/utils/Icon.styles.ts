@@ -40,4 +40,8 @@ export const Icon = styled.div<{ $showBackground?: boolean }>`
       cursor: not-allowed;
     }
   }
+
+  &.invisible {
+    visibility: hidden;
+  }
 `;
