@@ -68,6 +68,15 @@ export const VideoDetailsActions = styled.div`
 export const VideoDetailsInfo = styled.div`
   display: flex;
   align-items: center;
+  gap: 2rem;
+
+  &.small {
+    display: block;
+`;
+
+export const Account = styled.div`
+  display: flex;
+  margin-bottom: 1rem;
 `;
 
 export const UserAccount = styled.div`
@@ -92,12 +101,16 @@ export const SubscribeButton = styled.div`
   border-radius: 200rem;
   background-color: ${({ theme: { text } }) => text};
   color: ${({ theme: { background } }) => background};
-  margin-left: 2rem;
   font-size: 15px;
   font-weight: bold;
+  text-align: center;
 
   &.subscribed {
     background-color: grey;
+  }
+
+  &.small {
+    width: 35%;
   }
 `;
 

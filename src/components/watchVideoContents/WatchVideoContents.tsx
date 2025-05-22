@@ -5,6 +5,7 @@ import {
   MoreVideosContainer,
   StyledWatchVideoContents,
   SubscribeButton,
+  Account,
   UserAccount,
   VideoDescription,
   VideoDetails,
@@ -128,18 +129,22 @@ const WatchVideoContents = () => {
             <VideoDetailsActions
               className={window.innerWidth <= 600 ? "small" : ""}
             >
-              <VideoDetailsInfo>
-                <RegularVideoPic>
-                  <img src={videoToWatchData?.image} alt="profile pic" />
-                </RegularVideoPic>
-                <UserAccount>
-                  <Text className="name">{videoToWatchData?.user.name}</Text>
-                  <Text className="subscribers">
-                    {videoToWatchData?.duration}k {text.subscribers}
-                  </Text>
-                </UserAccount>
+              <VideoDetailsInfo
+                className={window.innerWidth <= 400 ? "small" : ""}
+              >
+                <Account>
+                  <RegularVideoPic>
+                    <img src={videoToWatchData?.image} alt="profile pic" />
+                  </RegularVideoPic>
+                  <UserAccount>
+                    <Text className="name">{videoToWatchData?.user.name}</Text>
+                    <Text className="subscribers">
+                      {videoToWatchData?.duration}k {text.subscribers}
+                    </Text>
+                  </UserAccount>
+                </Account>
                 <SubscribeButton
-                  className={subscribed ? "subscribed" : ""}
+                  className={`${subscribed ? "subscribed" : ""} ${window.innerWidth <= 400 ? "small" : ""}`}
                   onClick={handleSubscribed}
                 >
                   {subscribed ? text.subscribed : text.subscribe}
@@ -189,7 +194,9 @@ const WatchVideoContents = () => {
                   {faker.lorem.paragraphs(window.innerWidth <= 600 ? 2 : 4)}
                 </Text>
               ) : (
-                <Text>{faker.lorem.paragraphs(window.innerWidth <= 600 ? 1 : 2)}...</Text>
+                <Text>
+                  {faker.lorem.paragraphs(window.innerWidth <= 600 ? 1 : 2)}...
+                </Text>
               )}
               <Text className="showMore" onClick={() => toggleShowMore()}>
                 Show {showMore ? "Less" : "More"}
