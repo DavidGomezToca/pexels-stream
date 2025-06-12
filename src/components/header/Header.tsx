@@ -53,12 +53,12 @@ const Header = () => {
             <SlMenu size={17} />
           </Icon>
         )}
-        {window.innerWidth >= 450 && (
-          <LogoSection to="/">
-            <FaYoutube color="#FF0000" size={30} />
+        <LogoSection to="/">
+          <FaYoutube color="#FF0000" size={30} />
+          {window.innerWidth >= 650 && (
             <Text className="logo">PexelsStream</Text>
-          </LogoSection>
-        )}
+          )}
+        </LogoSection>
       </LeftSection>
       <SearchSection>
         <SearchBar className={window.innerWidth <= 400 ? "amplified" : ""}>

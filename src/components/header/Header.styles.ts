@@ -9,6 +9,7 @@ export const StyledHeader = styled.div`
   align-items: center;
   padding: 0 1rem;
   margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
 `;
 
 export const LeftSection = styled.div`

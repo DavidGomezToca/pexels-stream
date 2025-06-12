@@ -121,6 +121,7 @@ export const DetailsActions = styled.div`
 
   &.small {
     margin-top: 20px;
+    flex-wrap: wrap;
   }
 `;
 
