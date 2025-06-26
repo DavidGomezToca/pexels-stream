@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   DetailsActionButton,
   DetailsActions,
@@ -99,7 +99,6 @@ const WatchVideoContents = () => {
 
       fetchTranslation();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoToWatchData?.url, language]);
 
   if (isFetchingVideos || !videoToWatchData) {
@@ -144,7 +143,9 @@ const WatchVideoContents = () => {
                   </UserAccount>
                 </Account>
                 <SubscribeButton
-                  className={`${subscribed ? "subscribed" : ""} ${window.innerWidth <= 400 ? "small" : ""}`}
+                  className={`${subscribed ? "subscribed" : ""} ${
+                    window.innerWidth <= 400 ? "small" : ""
+                  }`}
                   onClick={handleSubscribed}
                 >
                   {subscribed ? text.subscribed : text.subscribe}

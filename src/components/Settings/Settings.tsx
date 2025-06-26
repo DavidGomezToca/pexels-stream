@@ -14,7 +14,7 @@ import { ITranslations } from "../../utils/translations";
 import { MdOutlineSettings } from "react-icons/md";
 import { Icon } from "../../utils/Icon.styles";
 
-const Settings = ({ setShowSettings }: any) => {
+const Settings = () => {
   const [showLanguages, setShowLanguages] = useState(false);
   const { text, theme, language, languages, switchLanguage, toggleTheme } =
     useAppContext();

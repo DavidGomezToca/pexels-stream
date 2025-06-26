@@ -1,4 +1,3 @@
-import React from "react";
 import { AppContainer, GlobalStyle } from "./App.styles";
 import { ThemeProvider } from "styled-components";
 import { THEMES } from "./utils/theme";

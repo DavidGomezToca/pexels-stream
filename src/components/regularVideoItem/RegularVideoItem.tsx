@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   RegularVideoContent,
   RegularVideoPic,
@@ -33,7 +33,7 @@ const RegularVideoItem = ({ video, smallView }: IRegularVideoItemProps) => {
     if (video?.url) {
       const fetchTranslation = async () => {
         const translated = await translateText(getTitle(video.url!), language);
-        setTitle(translated || getTitle(video.url!)); // Fallback to original title if translation fails
+        setTitle(translated || getTitle(video.url!));
       };
 
       fetchTranslation();

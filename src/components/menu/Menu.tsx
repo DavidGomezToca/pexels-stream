@@ -5,13 +5,8 @@ import { CATEGORIES } from "../../utils/categories";
 import { ITranslations } from "../../utils/translations";
 
 const Menu = () => {
-  const {
-    isMenuSmall,
-    text,
-    // activeMenuText,
-    activeCategory,
-    setActiveCategory,
-  } = useAppContext();
+  const { isMenuSmall, text, activeCategory, setActiveCategory } =
+    useAppContext();
   if (!isMenuSmall) {
     return (
       <StyledMenu>

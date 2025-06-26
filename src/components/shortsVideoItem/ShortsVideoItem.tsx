@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppContext } from "../../context/App.context";
 import {
   StyledShortsVideoItem,
@@ -26,7 +26,7 @@ const ShortsVideoItem = ({ video }: IShortsVideoItemProps) => {
     if (video?.url) {
       const fetchTranslation = async () => {
         const translated = await translateText(getTitle(video.url!), language);
-        setTitle(translated || getTitle(video.url!)); // Fallback to original title if translation fails
+        setTitle(translated || getTitle(video.url!));
       };
 
       fetchTranslation();
