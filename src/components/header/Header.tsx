@@ -19,12 +19,34 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 import { useLocation } from "react-router-dom";
 
+/**
+ * @component Header.
+ * @returns {JSX.Element} - The Header component.
+ */
 const Header = () => {
+  /**
+   * The search text.
+   * @type {[string, function]}.
+   */
   const [searchText, setSearchText] = useState("");
+
+  /**
+   * App context.
+   * @type {{object} {function} {function}}.
+   */
   const { text, setSearchBarText, toggleMenuSize } = useAppContext();
+
+  /**
+   * Speech recognition.
+   * @type {{string} {boolean} {boolean}}.
+   */
   const { transcript, listening, browserSupportsSpeechRecognition } =
     useSpeechRecognition();
 
+  /**
+   * Current location.
+   * @type {string}.
+   */
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -36,6 +58,10 @@ const Header = () => {
     return <span>Browser doesn't support speech recognition.</span>;
   }
 
+  /**
+   * Check if the current path is the home path.
+   * @type {boolean}.
+   */
   const isHomePath = pathname.length === 1;
 
   if (isHomePath) {

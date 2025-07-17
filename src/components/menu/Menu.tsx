@@ -4,7 +4,15 @@ import { Text } from "../../utils/Text.styles";
 import { CATEGORIES } from "../../utils/categories";
 import { ITranslations } from "../../utils/translations";
 
+/**
+ * @component Menu.
+ * @returns {JSX.Element} - The Menu component.
+ */
 const Menu = () => {
+  /**
+   * App context.
+   * @type {{boolean} {object} {string} {function}}.
+   */
   const { isMenuSmall, text, activeCategory, setActiveCategory } =
     useAppContext();
   if (!isMenuSmall) {

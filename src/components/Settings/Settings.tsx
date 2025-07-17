@@ -14,11 +14,26 @@ import { ITranslations } from "../../utils/translations";
 import { MdOutlineSettings } from "react-icons/md";
 import { Icon } from "../../utils/Icon.styles";
 
+/**
+ * @component Settings.
+ * @returns {JSX.Element} - The Settings component.
+ */
 const Settings = () => {
+  /**
+   * Check if the languages must be shown.
+   * @type {[boolean, function]}.
+   */
   const [showLanguages, setShowLanguages] = useState(false);
+  /**
+   * App context.
+   * @type {{object} {string} {string} {object} {function} {function}}.
+   */
   const { text, theme, language, languages, switchLanguage, toggleTheme } =
     useAppContext();
 
+  /**
+   * Toggle the visibility of languages.
+   */
   function toggleShowLanguages() {
     setShowLanguages((currentState: boolean) => !currentState);
   }

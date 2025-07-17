@@ -15,11 +15,35 @@ interface IShortsVideoItemProps {
   video: Video;
 }
 
+/**
+ * @component ShortsVideoItem.
+ * @returns {JSX.Element} - The ShortsVideoItem component.
+ */
 const ShortsVideoItem = ({ video }: IShortsVideoItemProps) => {
+  /**
+   * Check if the preview trailer must be played.
+   * @type {[boolean, function]}.
+   */
   const [playTrailer, setPlayTrailer] = useState(false);
+  /**
+   * App context.
+   * @type {{boolean} {function} {object} {string}}.
+   */
   const { isMenuSmall, setVideoToWatch, text, language } = useAppContext();
+  /**
+   * The maximum length of the video title.
+   * @type {number}.
+   */
   const TITLE_LENGTH = 50;
+  /**
+   * The number of views for the video.
+   * @type {number}.
+   */
   const views = Math.floor(video.duration * 1.2 + 2);
+  /**
+   * The title of the video.
+   * @type {[string, function]}.
+   */
   const [title, setTitle] = useState("Video Title");
 
   useEffect(() => {

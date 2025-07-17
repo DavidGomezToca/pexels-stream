@@ -31,7 +31,15 @@ import { LoadingBackdrop } from "../content/Content.styles";
 import RegularVideoItem from "../regularVideoItem/RegularVideoItem";
 import { RegularVideoPic } from "../regularVideoItem/RegularVideoItem.styles";
 
+/**
+ * @component WatchVideoContents.
+ * @returns {JSX.Element} - The WatchVideoContents component.
+ */
 const WatchVideoContents = () => {
+  /**
+   * App context.
+   * @type {{object} {function} {object} {boolean} {object} {string}}.
+   */
   const {
     videos,
     fetchVideo,
@@ -40,12 +48,40 @@ const WatchVideoContents = () => {
     text,
     language,
   } = useAppContext();
+  /**
+   * The ID of the video to watch.
+   * @type {string}.
+   */
   const { id } = useParams();
+  /**
+   * Check if the user liked the video.
+   * @type {[string, function]}.
+   */
   const [like, setLike] = useState(false);
+  /**
+   * Check if the user disliked the video.
+   * @type {[string, function]}.
+   */
   const [dislike, setDislike] = useState(false);
+  /**
+   * Check if the user subscribed to the channel.
+   * @type {[string, function]}.
+   */
   const [subscribed, setSubscribed] = useState(false);
+  /**
+   * Check if the user saved the video.
+   * @type {[string, function]}.
+   */
   const [saved, setSaved] = useState(false);
+  /**
+   * The title of the video.
+   * @type {[string, function]}.
+   */
   const [title, setTitle] = useState("Video Title");
+  /**
+   * Check if show more is active.
+   * @type {[boolean, function]}.
+   */
   const [showMore, setShowMore] = useState(false);
 
   const handleLike = () => {
@@ -54,22 +90,18 @@ const WatchVideoContents = () => {
       setDislike(false);
     }
   };
-
   const handleDislike = () => {
     setDislike((prevDislike) => !prevDislike);
     if (!dislike) {
       setLike(false);
     }
   };
-
   const handleSubscribed = () => {
     setSubscribed((prevSubscribed) => !prevSubscribed);
   };
-
   const handleSaved = () => {
     setSaved((prevSaved) => !prevSaved);
   };
-
   const toggleShowMore = () => {
     setShowMore((prevShowMore) => !prevShowMore);
   };

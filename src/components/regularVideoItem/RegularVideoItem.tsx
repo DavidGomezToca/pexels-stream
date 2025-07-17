@@ -20,13 +20,40 @@ interface IRegularVideoItemProps {
   smallView?: boolean;
 }
 
+/**
+ * @component RegularVideoItem.
+ * @returns {JSX.Element} - The RegularVideoItem component.
+ */
 const RegularVideoItem = ({ video, smallView }: IRegularVideoItemProps) => {
+  /**
+   * Check if the preview trailer must be played.
+   * @type {[boolean, function]}.
+   */
   const [playTrailer, setPlayTrailer] = useState(false);
-  const { isMenuSmall, setVideoToWatch, language } = useAppContext();
+  /**
+   * App context.
+   * @type {{boolean} {function} {object} {string}}.
+   */
+  const { isMenuSmall, setVideoToWatch, text, language } = useAppContext();
+  /**
+   * The maximum length of the video title.
+   * @type {number}.
+   */
   const TITLE_LENGTH = 50;
+  /**
+   * The number of views for the video.
+   * @type {number}.
+   */
   const views = Math.floor(video.duration * 1.2 + 2);
+  /**
+   * The date of upload for the video.
+   * @type {number}.
+   */
   const dateUpload = Math.floor(video.duration / 0.8 + 5);
-  const { text } = useAppContext();
+  /**
+   * The title of the video.
+   * @type {[string, function]}.
+   */
   const [title, setTitle] = useState("Video Title");
 
   useEffect(() => {

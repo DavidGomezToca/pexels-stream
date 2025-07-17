@@ -8,8 +8,17 @@ import { Text } from "../../utils/Text.styles";
 import { useAppContext } from "../../context/App.context";
 import { ITranslations } from "../../utils/translations";
 
+/**
+ * @component Categories.
+ * @returns {JSX.Element} - The Categories component.
+ */
 const Categories = () => {
+  /**
+   * App Context.
+   * @type {{object} {string} {function}}.
+   */
   const { text, activeCategory, setActiveCategory } = useAppContext();
+
   return (
     <CategoriesCarousel>
       <StyledCategories>

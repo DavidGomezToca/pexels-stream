@@ -17,10 +17,30 @@ interface IVideoShortsProps {
   videos: Video[];
 }
 
+/**
+ * @component VideoShorts.
+ * @returns {JSX.Element} - The VideoShorts component.
+ */
 const VideoShorts = ({ videos }: IVideoShortsProps) => {
-  const [showLess, setShowLess] = useState(true);
-  const videosList = showLess ? videos.slice(0, videos.length / 2) : videos;
+  /**
+   * Check if show more is active.
+   * @type {[boolean, function]}.
+   */
+  const [showMore, setShowMore] = useState(false);
+  /**
+   * The list of videos to display.
+   * @type {{object}}.
+   */
+  const videosList = showMore ? videos : videos.slice(0, videos.length / 2);
+  /**
+   * App context.
+   * @type {{object}}.
+   */
   const { text } = useAppContext();
+  /**
+   * The amount of videos to display by row.
+   * @type {[string, function]}.
+   */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [videosByRow, setVideosByRow] = React.useState(
     window.innerWidth <= 450
@@ -48,12 +68,12 @@ const VideoShorts = ({ videos }: IVideoShortsProps) => {
         ))}
       </ShortsVideosContainer>
       <MoreLessContainer>
-        <MoreLessButton onClick={() => setShowLess((state) => !state)}>
-          <Text>{showLess ? text.showMore : text.showLess}</Text>
-          {showLess ? (
-            <IoIosArrowDown className="icon" size={20} />
-          ) : (
+        <MoreLessButton onClick={() => setShowMore((state) => !state)}>
+          <Text>{showMore ? text.showLess : text.showMore}</Text>
+          {showMore ? (
             <IoIosArrowUp className="icon" size={20} />
+          ) : (
+            <IoIosArrowDown className="icon" size={20} />
           )}
         </MoreLessButton>
       </MoreLessContainer>
